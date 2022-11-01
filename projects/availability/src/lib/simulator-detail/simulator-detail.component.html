@@ -1,0 +1,115 @@
+<fc-availability-gallery-thumb [hotelImages]="entityResult.images" [visibilityModal]="visibilityModal" (visibilityEvent)="onChangeVisibilityModal($event)">
+</fc-availability-gallery-thumb>
+
+<div class="detail">
+  <div class="col-filter">
+    <!-- Nova Pesquisa Pesquisa -->
+    <div class="conteudo filter" [ngClass]="{'view-search': viewSearch}">
+      <fc-availability-simulator-filter [isPageList]="true">
+      </fc-availability-simulator-filter>
+    </div>
+  </div>
+
+  <div class="col-detail">
+    <!-- Mensagem nenhum resultado encontrado -->
+    <fc-availability-alert-message [textAlert]="'Sua busca não retornou resultados.'"
+      [subTextAlert]="'Experimente buscar por uma data diferente'" *ngIf="msgError">
+    </fc-availability-alert-message>
+
+    <!-- Detalhe do Hotel -->
+    <div *ngIf="!msgError && !loading">
+      <!-- Imagem Mobile -->
+      <!-- <carousel [noWrap]="false" class="img-mobile">
+        <div class="btn-back" (click)="bakcList()">
+          <i class="icon-seta-left"></i>
+        </div>
+        <slide *ngFor="let image of entityResult.images">
+          <img [src]="image.imageUrl" alt="first slide" style="display: block; width: 100%; height: 293px;">
+        </slide>
+      </carousel> -->
+      <div class="img-mobile">
+        <div *ngFor="let image of entityResult.images; let i = index">
+          <div (click)="visibilityModal=true" *ngIf="slideIndex === (i+1)" id="selectedSlide" class="selectedSlide" 
+          [ngStyle]="{'background-image': 'url(' + image.imageUrl + ')' }"></div>
+        </div>
+        <a class="prev" (click)="plusDivs(-1)">&#10094;</a>
+        <a class="next" (click)="plusDivs(1)">&#10095;</a>
+      </div>
+
+      <!-- Imagem Desktop -->
+      <div class="img-desktop">
+        <div class="detail-img-main" [ngStyle]="{'background-image': 'url(' + entityResult.imageUrl + ')'  }">
+        </div>
+        <div class="detail-div-mini">
+          <div class="detail-img-top" [ngStyle]="{'background-image': 'url(' + entityResult.secondImage + ')'  }">
+          </div>
+          <div class="detail-img-bottom" [ngStyle]="{'background-image': 'url(' + entityResult.thirdImage + ')'  }">
+            <!-- <div class="backdrop" (click)="modalViewImages(hotelModalImages)" *ngIf="entityResult.anyImages">
+              + {{entityResult.images.length}}
+            </div> -->
+            <div class="backdrop" (click)="visibilityModal=true" *ngIf="entityResult.anyImages">
+              + {{entityResult.images.length}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal Images -->
+      <ng-template #hotelModalImages>
+        <!-- <fc-availability-galery-images [hotelImages]="entityResult.images" [modalRef]="modalRefImages">
+        </fc-availability-galery-images> -->
+      </ng-template>
+
+      <div class="info">
+        <div class="item-info">
+          <!-- Nome do Hotel -->
+          <div class="title">
+            {{entityResult.name}}
+          </div>
+          <!-- Endereço do Hotel -->
+          <div class="address">
+            {{entityResult.anddress}}
+          </div>
+          <div class="category">
+            <i class="icon-estrela on" 
+              *ngFor="let item of entityResult.hotelDetails.listCategory"></i>
+          </div>
+        </div>
+        <div class="item-map" *ngIf="entityResult.anyMap">
+          <div class="img">
+            <button id="btnViewMap" class="btn-view-map" (click)="modalViewMapa(hotelModalMapa)">Ver Mapa</button>
+          </div>
+          <!-- Modal Mapa -->
+          <ng-template #hotelModalMapa>
+            <fc-availability-map [latitude]="entityResult.hotelDetails.localization.latitude" [width]="'100%'" [height]="'100%'"
+              [showControlsZoom]="true" [longitude]="entityResult.hotelDetails.localization.longitude" [latitudePointer]="entityResult.hotelDetails.localization.latitude"
+              [nameHotel]="entityResult.name" [listCategory]="entityResult.hotelDetails.listCategory" [andress]="entityResult.anddress"
+              [longitudePointer]="entityResult.hotelDetails.localization.longitude" [modalRef]="modalRefMapa">
+            </fc-availability-map>
+          </ng-template>
+        </div>
+        <div class="content-info-hotel">
+          <!-- Descrição do Hotel -->
+          <div id="btn-accordion-detail" class="accordion" (click)="accordionView()"
+            *ngIf="entityResult.anyDescription">
+            <div class="accordion-title"> Descrição do hotel</div>
+            <div class="accordion-seta">
+              <i class="icon-seta-down" [ngClass]="{'icon-seta-up': viewDescription }"></i>
+            </div>
+          </div>
+          <div class="accordion-content" [ngClass]="{'closed': !viewDescription}" *ngIf="entityResult.anyDescription">
+            <div [innerHTML]="entityResult.hotelDetails.description['pt-BR']">
+            </div>
+            <div>
+              <b>Detalhes do hotel</b>
+              <ul class="list-ul">
+                <li *ngFor="let amenities of entityResult.hotelDetails.amenities">
+                  <span>{{amenities.name['pt-BR']}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

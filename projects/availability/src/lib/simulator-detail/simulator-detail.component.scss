@@ -1,0 +1,742 @@
+@import '../shared/assets/common.scss';
+
+.selectedSlide {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: block;
+  height: 350px; 
+  margin: auto; 
+  padding-bottom: 20px;
+  max-width: 550px;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background: hsla(0,0%,100%,.6);
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  cursor: pointer;
+}
+
+.detail {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.view-search {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow-x: scroll;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  margin: 0;
+  z-index: 2;
+  left: 0;
+  padding: 60px 0;
+  border: none;
+  border-bottom: 0;
+}
+
+.col-detail {
+  padding-left: 35px;
+  width: calc(100% - 273px);
+  float: left;
+}
+
+.col-filter {
+  float: left;
+  width: 273px;
+}
+
+.btn-view-rooms {
+  float: right;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.btn-view-rooms button {
+  width: 238.7px;
+  float: right;
+}
+
+.header-title {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  z-index: 4;
+  width: 100%;
+  padding: 15px;
+}
+
+.detail-img-main {
+  background-repeat: no-repeat;
+  background-size: cover;
+  float: left;
+  height: 416px;
+  border-radius: 5px;
+  width: 70%
+}
+
+.detail-div-mini {
+  float: right;
+  width: 30%;
+  padding-left: 30px;
+}
+
+.detail-img-top {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  float: right;
+  height: 193px;
+  border-radius: 5px;
+}
+
+.detail-img-bottom {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  float: right;
+  height: 193px;
+  border-radius: 5px;
+  margin-top: 29px;
+}
+
+.backdrop {
+  float: left;
+  width: 100%;
+  height: 100%;
+  background-color: $color_backdrop;
+  font-size: 50px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  text-align: center;
+  color: white;
+  padding: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding-top: 55px;
+}
+
+.backdrop:hover {
+  background-color: $color_backdrop;
+}
+
+.info {
+  float: left;
+  width: 100%;
+  border-radius: 5px;
+  border: solid 1px $pedra_clara;
+  background-color: white;
+  margin-top: 32px;
+  border: solid 1px #e7e7e7;
+  padding: 30px;
+}
+
+.item-info {
+  float: left;
+  width: 60%;
+
+  height: 76%;
+}
+
+
+.title {
+  font-family: Roboto;
+  font-size: 25px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: $pedra_do_mar;
+  float: left;
+  width: 100%;
+  padding-top: 11px;
+}
+
+
+.address {
+  font-size: 17px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.18;
+  letter-spacing: normal;
+  text-align: left;
+  color: $pedra_do_mar;
+  float: left;
+  width: 100%;
+  padding-top: 11px;
+}
+
+
+.category {
+  float: left;
+  width: 100%;
+  padding-top: 11px;
+
+}
+
+.cancel {
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  text-align: left;
+  color: $color_light;
+  float: left;
+  width: 100%;
+  padding-top: 11px;
+}
+
+.last-room {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  text-align: left;
+  color: $ceu_de_pipa;
+  padding-top: 11px;
+  float: left;
+  width: 100%;
+}
+
+.item-map {
+  background-repeat: no-repeat;
+  background-size: cover;
+  float: right;
+  width: 37%;
+  height: 100%;
+  padding-left: 68px;
+  position: relative;
+}
+
+.btn-view-map {
+  width: 100px;
+  height: 30px;
+  box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.33);
+  background-color: $horizonte;
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  bottom: 20px;
+  right: 63px;
+  border: none;
+  border-radius: 5px;
+}
+
+.item-map .img {
+  background-image: url('https://static.ferias.co/images/map.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  float: right;
+  width: 238.7px;
+  height: 144.6px;
+}
+
+.cancel {
+  font-size: 16px;
+  line-height: 1.19;
+  text-align: left;
+  color: $color_light;
+  float: left;
+  width: 100%;
+  padding-bottom: 16px;
+}
+
+.icon-check {
+  color: $color_light;
+  font-size: 11px;
+  padding-left: 3px;
+  padding-top: 6px;
+  font-weight: normal;
+}
+
+.cancel span,
+.last-room span {
+  padding-left: 7px;
+  padding-top: 1px;
+}
+
+.content-info-hotel {
+  float: left;
+  width: 100%;
+}
+
+.list-ul {
+  float: left;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: $mergulho;
+}
+
+.list-ul span {
+  color: $pedra_do_mar;
+}
+
+.icon-estrela {
+  color: $color_secondary;
+  margin-right: 5px;
+}
+
+.icon-estrela.on {
+  color: $horizonte;
+}
+
+.img-mobile {
+  float: left;
+  width: 100%;
+  display: none;
+  position: relative;
+}
+
+.img-desktop {
+  float: left;
+  width: 100%;
+  display: block;
+}
+
+.btn-back {
+  position: absolute;
+  left: 30px;
+  top: 20px;
+  z-index: 2;
+  height: 50px;
+  width: 50px;
+}
+
+.btn-back .icon-seta-left {
+  color: white;
+}
+
+
+.rooms {
+  float: left;
+  width: 100%;
+  margin-top: 30px;
+  padding-top: 27px;
+  border-top: dashed 1px $pedra_clara;
+}
+
+.room-title {
+  float: left;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  color: $pedra_do_mar;
+}
+
+.room-sub-title {
+  padding-top: 10px;
+  font-size: 14px;
+  float: left;
+  width: 100%;
+  color: $pedra_do_mar;
+}
+
+.room-field {
+  float: left;
+  width: 100%;
+  border-radius: 5px;
+  border: solid 1px $pedra_clara;
+  background-color: $color_fundo;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.room-legend {
+  border-radius: 5px;
+  border: solid 1px $pedra_clara;
+  background-color: white;
+  width: max-content;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 4px 10px;
+  margin-left: 17px;
+  height: 39px;
+  color: $pedra_do_mar;
+  margin-bottom: 21px;
+}
+
+.room-info {
+  float: left;
+  width: 100%;
+  height: 130px;
+  border: solid 1px $pedra_clara;
+  background-color: white;
+  height: 70%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.room-description {
+  float: left;
+  width: 66%;
+  margin: 20px;
+  border-right: dashed 1px $pedra_clara;
+  padding-right: 30px;
+}
+
+.room-description-title {
+  float: left;
+  width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+  color: $pedra_do_mar;
+  padding-bottom: 15px;
+}
+
+.room-description-board {
+  font-size: 12px;
+  color: $color_light;
+  padding-bottom: 10px;
+}
+
+.room-description-board.no-board {
+  color: $pedra_cinza;
+}
+
+.room-description-board.no-board i {
+  color: $pedra_cinza;
+  padding-top: 3px;
+  padding-right: 11px;
+  padding-left: 2px;
+  font-size: 12px;
+}
+
+.icon-rooms,
+.icon-hospede {
+  float: left;
+  padding-top: 4px;
+  font-size: 18px;
+}
+
+.room-description-board i,
+.room-description-policy .icon-check {
+  font-size: 9px;
+  color: $color_light;
+  padding-right: 10px;
+  float: left;
+}
+
+.room-description-policy {
+  float: left;
+  width: 100%;
+  font-size: 12px;
+  color: $color_light;
+}
+
+.room-description-policy.no {
+  color: $pedra_cinza;
+}
+
+.room-description-policy i {
+  font-size: 12px;
+  color: $pedra_cinza;
+  padding-top: 3px;
+  padding-right: 11px;
+  padding-left: 2px;
+}
+
+.room-hospede {
+  float: left;
+  width: 186px;
+  margin: 20px 0;
+
+}
+
+.room-qtd {
+  float: left;
+  width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+  color: $pedra_do_mar;
+}
+
+.room-qtd .icon-text,
+.hospede-room .icon-text {
+  padding-left: 9px;
+  padding-top: 6px;
+  float: left;
+  width: 80%;
+}
+
+.room-lupa {
+  float: right;
+  width: 20px;
+  position: absolute;
+  bottom: 22px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.room-lupa i {
+  color: $mergulho;
+}
+
+
+.hospede-room {
+  float: left;
+  width: 100%;
+  font-size: 14px;
+  padding-top: 15px;
+}
+
+
+.room-money {
+  float: right;
+  width: 444px;
+
+}
+
+.room-money-qtd-rooms {
+  float: left;
+  width: 92px;
+  font-size: 16px;
+  border-right: dashed 1px $pedra_clara;
+  height: 45px;
+  color: $pedra_do_mar;
+  text-align: right;
+  padding-right: 21px;
+  padding-top: 10px;
+}
+
+.room-money-day-plan {
+  float: left;
+  width: 222px;
+  padding-left: 19.5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: right;
+  color: $pedra_do_mar;
+  border-right: dashed 1px $pedra_clara;
+  padding-right: 21px;
+  height: 45px;
+}
+
+.room-money-day-plan.my-plan {
+  padding-top: 10px;
+}
+
+.room-money-booking {
+  float: right;
+  width: 130px;
+  padding-left: 21px;
+  padding-top: 5px;
+
+}
+
+.room-money-booking button {
+  width: 111.5px;
+  float: right;
+}
+
+.title-modal {
+  font-family: Roboto;
+  font-size: 25px;
+  font-weight: bold;
+  color: $mergulho;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+/* Medium */
+@media only screen and (min-width: 873px) and (max-width: 1199px) {
+  .conteudo.mala {
+    display: none;
+  }
+
+  .conteudo.filter {
+    padding: 0;
+    border: 0;
+    padding-bottom: 15px;
+    border-bottom: dashed 1px $mergulho;
+    border-radius: 0;
+    background: $color_fundo;
+  }
+
+  .col-filter {
+    width: 100%;
+  }
+
+  .col-detail {
+    width: 100%;
+    padding-left: 0;
+  }
+
+}
+
+
+/* Mobile */
+@media only screen and (max-width: 872px) {
+
+  fc-availability-map {
+    height: 84%;
+    float: left;
+    width: 100%;
+  }
+
+  .col-filter,
+  .img-desktop {
+    display: none;
+  }
+
+  .img-mobile {
+    display: block;
+  }
+
+  .rooms {
+    border-top: dashed 1px $mergulho;
+  }
+
+  .room-field {
+    padding: 15px;
+  }
+
+  .room-title {
+    color: $passeio_noturno;
+  }
+
+  .room-description {
+    width: 90%;
+    border-right: none;
+    border-bottom: dashed 1px $pedra_clara;
+    padding-bottom: 15.5px;
+  }
+
+  .room-hospede {
+    width: 90%;
+    margin: 0 20px 20px;
+  }
+
+  .room-qtd {
+    width: 100px;
+  }
+
+  .hospede-room {
+    width: 60%;
+    padding-top: 0;
+  }
+
+  .col-detail,
+  .item-info {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .item-map {
+    width: 100%;
+    float: left;
+    padding-top: 20.5px;
+    padding-left: 0;
+  }
+
+  .item-map .img {
+    background-image: url('https://static.ferias.co/images/mapa-mobile.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: right;
+    width: 100%;
+    float: left;
+    border-radius: 5px;
+  }
+
+  .btn-view-map {
+    right: 27px;
+  }
+
+  .btn-view-rooms {
+    padding-top: 22px;
+  }
+
+  .btn-view-rooms button {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .address {
+    font-size: 14px;
+  }
+
+  .category {
+    padding-top: 19.1px;
+    padding-bottom: 19px;
+  }
+
+  .info {
+    padding: 20px;
+    border: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .room-money {
+    float: left;
+    width: 100%;
+  }
+
+  .room-money-qtd-rooms,
+  .room-money-day-plan {
+    width: 100%;
+    border-right: none;
+    float: left;
+    text-align: left;
+    padding: 0;
+    height: auto;
+    font-size: 15px;
+  }
+
+  .room-money-booking {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .room-money-booking button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .item-map .img {
+    height: 62.5px;
+  }
+}

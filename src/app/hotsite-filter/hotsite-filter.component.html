@@ -1,0 +1,43 @@
+<div class="fc-container">
+    <fc-availability-filter-search [isTitle]="false" [isHome]="true" [onlyCity]="true" [simulator]="true"
+        [planIdDefault]="'2c51afde-4f49-4193-a948-24018d543fb3'">
+    </fc-availability-filter-search>
+</div>
+<div class="fc-container">
+
+</div>
+
+
+<div class="content_max" [ngClass]="{'focus': isDestinationFocus}">
+    <div class="content_width">
+        <div class="content_component">
+            <div class="user-name">
+                <span>Olá Teste!</span>
+            </div>
+            <h1 class="title">Conheça nossos planos anuais</h1>
+            <div class="award">
+                <div class="award_img">
+                    <img src="https://static.ferias.co/images/trofeu.jpg" class="trofeu">
+                </div>
+                <div class="award_text">
+                    <span>
+                        <strong>Sua empresa paga parte da conta!</strong> Confira os valores exclusivos para você:
+                    </span>
+                </div>
+            </div>
+            <div class="position-plans">
+                planos
+            </div>
+            <div class="divisor"></div>
+            <div class="search">
+                <div class="search_content">
+                    <fc-availability-filter-search [isTitle]="false" [simulator]="true" [onlyCity]="true"
+                        (changeDestinationFocus)="changeDestinationFocus($event)"
+                        [planIdDefault]="'2c51afde-4f49-4193-a948-24018d543fb3'">
+                    </fc-availability-filter-search>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

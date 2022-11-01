@@ -1,0 +1,45 @@
+<div id="filterSearch" class="filter-search" [ngClass]="{ 'page-list': isPageList, 'home': isHome}">
+    <div class="title-page" *ngIf="!isPageList || isHome">
+        Confira as hospedagens disponíveis:
+    </div>
+
+
+    <!-- <div class="label-text" *ngIf="!isPageList && !isHome">Pesquise por plano:</div>
+    <div class="plans" *ngIf="!isPageList && !isHome">
+        <label class="fc-input-radio" *ngFor="let item of common.typesPlan">
+            <input type="radio" name="radioPlan" [value]="item.id" [(ngModel)]="entity.hotelSimulatorFilter.planType">
+            <span class="fc-checkradio"></span>
+            {{item.name}}
+        </label>
+    </div> -->
+
+    <!-- Autocomplete Destination -->
+    <div class="form-group">
+        <div class="label-text" *ngIf="!isPageList || isHome">Cidade</div>
+        <div id="destantion" class="input-group destination" [ngClass]="{'input-error': messaError.destination}">
+
+            <ngx-select id="autocompleteCity" class="auto-complete simulator" [items]="citys" optionValueField="id"
+                optionTextField="name" optGroupLabelField="name" optGroupOptionsField="children"
+                noResultsFound="Nenhum registro encontrado" [(ngModel)]="entity.hotelSimulatorFilter.cityId"
+                (focus)="focusAutoCompleteCity()" (selectionChanges)="selectedCity($event)"
+                (typed)="loadAutoComplete($event)" (blur)="blurAutoCompleteCity()" allowClear="true" placeholder="">
+            </ngx-select>
+            <div class="error-message" *ngIf="messaError.destination">
+                Informe a cidade
+            </div>
+
+            <img *ngIf="loadingAutoComplete" class="loading-complete"
+                src="https://static.ferias.co/images/gif/loading_cinza.gif" alt="" />
+        </div>
+        <!-- Botão Pesquisar -->
+        <div class="btn-search">
+            <button type="button" (click)="search()" id="btnSearch" class="fc-btn fc-btn-success">
+                <span *ngIf="isPageList">Nova pesquisa</span>
+                <span *ngIf="!isPageList || isHome">PESQUISAR</span>
+            </button>
+        </div>
+        <div class="header-lupa-filter" (click)="search()">
+            <i class="icon-lupa"></i>
+        </div>
+    </div>
+</div>

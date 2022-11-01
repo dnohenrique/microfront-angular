@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap');
+
+html,
+body {
+  background: #fafafa;
+}
+
+.fc-container {
+  max-width: 1245px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 30px;
+  padding-left: 30px;
+  min-height: max-content;
+}
+
+:focus {
+  outline: none !important;
+}
+
+input[type="radio"],
+input[type="checkbox"],
+::after,
+::before,
+.fc-checkradio,
+.container-ckeck,
+.icon-img,
+.checkmark {
+  box-sizing: initial !important;
+}
+
+@media (max-width: 960px) {
+  .fc-container {
+    padding-right: 20px;
+    padding-left: 20px;
+    background: white;
+  }
+
+}
+
+@media (max-width: 335px) {
+  .fc-container {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}

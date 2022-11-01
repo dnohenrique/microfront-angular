@@ -1,0 +1,75 @@
+<div class="modal-header">
+  <h4 id="dialog-static-name" class="modal-title pull-left title-modal">Mapa</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <aol-map [logo]="true" [width]="width" [height]="height" (onClick)="viewText = true">
+    <aol-interaction-default></aol-interaction-default>
+    <aol-view [zoom]="zoom">
+      <aol-coordinate [x]="longitude" [y]="latitude" [srid]="'EPSG:4326'"></aol-coordinate>
+    </aol-view>
+    <aol-layer-tile [opacity]="opacity">
+      <aol-source-osm></aol-source-osm>
+    </aol-layer-tile>
+    <aol-layer-vector [opacity]="opacity">
+      <aol-source-vector>
+        <aol-feature>
+          <aol-geometry-point>
+            <aol-coordinate [x]="longitudePointer" [y]="latitudePointer" [srid]="'EPSG:4326'"></aol-coordinate>
+          </aol-geometry-point>
+          <aol-style>
+            <aol-style-circle [radius]="10">
+              <aol-style-stroke [color]="'black'" [width]="width"></aol-style-stroke>
+              <aol-style-fill [color]="'green'"></aol-style-fill>
+            </aol-style-circle>
+          </aol-style>
+        </aol-feature>
+        <aol-feature>
+          <aol-geometry-point>
+            <aol-coordinate [x]="longitudePointer" [y]="latitudePointer" [srid]="'EPSG:4326'"></aol-coordinate>
+          </aol-geometry-point>
+          <aol-style>
+            <aol-style-icon [src]="markerImage" [anchor]="[0.5, 1]" [anchorXUnits]="'fraction'"
+              [anchorYUnits]="'fraction'" [scale]="0.1" [anchorOrigin]="'top-left'">
+            </aol-style-icon>
+          </aol-style>
+        </aol-feature>
+      </aol-source-vector>
+    </aol-layer-vector>
+    <aol-overlay>
+      <aol-coordinate [x]="longitudePointer" [y]="latitudePointer" [srid]="'EPSG:4326'">
+      </aol-coordinate>
+      <aol-content>
+        <div class="my-overlay-class" *ngIf="viewText">
+          <div class="map-title">{{nameHotel}}</div>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="viewText = false">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="map-category">
+            <i class="icon-estrela on" 
+            *ngFor="let item of listCategory"></i>
+          </div>
+          <div class="map-andress">{{andress}}</div>
+        </div>
+      </aol-content>
+    </aol-overlay>
+    <aol-control>
+      <aol-content>
+        <div *ngIf="showControlsZoom" class="ol-overlaycontainer-stopevent">
+          <div class="ol-zoom ol-unselectable ol-control">
+            <button [title]="titleZoomIn" class="fc-btn fc-btn-success btn-zoom" type="button" title="Zoom in"
+              (click)="increaseZoom()">+</button>
+            <button [title]="titleZoomOut" class="fc-btn fc-btn-success btn-zoom" type="button" title="Zoom out"
+              (click)="decreaseZoom()">−</button>
+          </div>
+          <div *ngIf="showControlsCurrentLocation && position" class="ol-rotate ol-unselectable ol-control">
+            <button [title]="titleCurrentLocation" (click)="setCurrentLocation($event)">&#8982;</button>
+          </div>
+        </div>
+      </aol-content>
+    </aol-control>
+  </aol-map>
+</div>

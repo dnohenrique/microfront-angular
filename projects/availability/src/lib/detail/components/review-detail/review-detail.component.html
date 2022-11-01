@@ -1,0 +1,57 @@
+<section *ngIf="entityReview.total > 0">
+    <div id="btn-accordion-review" class="accordion" (click)="accordionRating()">
+        <div class="accordion-title">O que os hóspedes dizem? </div>
+        <div class="accordion-seta">
+            <i class="icon-seta-down" [ngClass]="{'icon-seta-up': viewRating }"></i>
+        </div>
+    </div>
+    <div class="accordion-content" [ngClass]="{'closed': !viewRating}">
+        <div>
+            <div class="rating-detail">
+
+                <div class="col-rating first">
+                    <div class="col-text">
+                        <div class="title">Nota Geral</div>
+                        <div class="number">{{reviewHotel?.notaMediaExibicao}}</div>
+                        <div class="description">"{{reviewHotel?.notaDescricao}}"</div>
+                        <div class="count-user">({{reviewHotel?.totalAvaliacoes}} avaliações)</div>
+                    </div>
+                </div>
+                <div class="comment-detail">
+                    <div class="title">Comentários</div>
+                    <div class="comment-row" *ngFor="let review of reviewsView">
+                        <div class="img-author" [ngStyle]="{'background-image': 'url(' + review.urlFotoAutor +')'}" [ngClass]="{'img-author-none': !review.urlFotoAutor}">
+                            <span *ngIf="!review.urlFotoAutor">{{review.nomeInicial}}</span>
+                        </div>
+                        <div class="data-author">
+                            <div class="name-author">
+                                {{review.nomeAutor}}
+                            </div>
+                            <div class="date-author">
+                                {{review.dataPublicacao || (review.dataCriacao | date: 'dd/MM/yyyy')}}
+                            </div>
+                        </div>
+                        <div class="rating-author">
+                            {{review.notaMediaExibicao}}
+                        </div>
+
+                        <div class="description-author" *ngIf="review.isTextLong">
+                            {{review.textMin}}... <span class="plus-read" (click)="viewPlus(review)">Leia
+                                mais</span>
+                        </div>
+
+                        <div class="description-author" *ngIf="!review.isTextLong">
+                            {{review.text}} <span class="plus-read" *ngIf="review.textMin" (click)="viewPlus(review)">Leia
+                                menos</span>
+                        </div>
+                    </div>
+
+                    <!--PAGINAÇÃO-->
+                    <fc-availability-pagination (paginationEvent)="getRatings($event)" [datas]="entityReview.reviews"
+                        [cssScrollTop]="'.comment-detail'" [registersPerPage]="3" [id]="'reviews'">
+                    </fc-availability-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

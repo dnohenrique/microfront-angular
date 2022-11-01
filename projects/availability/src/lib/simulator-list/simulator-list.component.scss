@@ -1,0 +1,473 @@
+@import '../shared/assets/common.scss';
+
+.list-content {
+  padding: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.col-filter {
+  width: 273px;
+  float: left;
+}
+
+.col-list {
+  padding-left: 35px;
+  width: calc(100% - 273px);
+  float: left;
+}
+
+.title-filter {
+  float: left;
+  width: 100%;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: $mergulho;
+}
+
+.item-filter {
+  float: left;
+  width: 100%;
+}
+
+.label-title {
+  width: 100%;
+  float: left;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: bold;
+  color: $pedra_cinza;
+}
+
+.btn-filter,
+.header-title,
+.header-mobile-list {
+  display: none;
+}
+
+.filters {
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.filter-close {
+  display: none;
+  float: right;
+  width: 24px;
+}
+
+.conteudo.filter {
+  padding: 20px 7px 7px 7px;
+}
+
+.header-msg-mobile {
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: $pedra_do_mar;
+  width: 60%;
+  float: left;
+}
+
+.header-msg-mobile .qtd {
+  font-weight: bold;
+}
+
+.order {
+  border: none;
+  width: 40%;
+  float: left;
+  position: relative;
+}
+
+.item-order {
+  position: absolute;
+  right: 0;
+}
+
+.order .label {
+  float: left;
+  width: 101px;
+}
+
+#selectOrder {
+  width: 210px;
+  height: 34px;
+  float: left;
+}
+
+#selectOrder:focus,
+#selectOrder div:focus {
+  outline-width: 0;
+  outline-style: none;
+}
+
+.order-mobile {
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  margin: 0;
+  z-index: 2;
+  left: 0;
+  padding: 20px;
+  bottom: 0;
+}
+
+.item-order-mobile {
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.filter-close .icon-fechar {
+  font-size: 16px;
+  color: $pedra_do_mar;
+}
+
+.div-filter {
+  float: left;
+  width: 50%;
+  font-size: 16px;
+  color: $passeio_noturno;
+  line-height: 1.81;
+}
+
+.filters {
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.order-filter {
+  width: auto;
+  margin-left: -56px;
+}
+
+.div-order {
+  float: left;
+  width: 100%;
+  font-size: 16px;
+  color: #4E306F;
+  line-height: 1.81;
+  text-align: center;
+  border-right: none;
+}
+
+.msg-plan {
+  float: left;
+  width: 100%;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px dashed $pedra_clara;
+}
+
+.msg-plan-img {
+  float: left;
+  background: url('https://static.ferias.co/images/lamp.svg') no-repeat;
+  background-size: 100% 100%;
+  width: 33.8px;
+  height: 40.6px;
+  margin-bottom: 10px;
+}
+
+.msg-plan-title {
+  float: left;
+  width: calc(100% - 34px);
+  padding-left: 20px;
+  padding-top: 1px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Roboto;
+}
+
+.msg-pla-subtitle {
+  float: left;
+  width: calc(100% - 34px);
+  padding-left: 20px;
+  padding-top: 1px;
+  font-size: 16px;
+  font-family: Roboto;
+}
+
+
+/* Medium */
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .list-content {
+    padding-top: 0;
+  }
+
+  .col-filter .filter-hotel,
+  .order {
+    display: none;
+  }
+
+  .order-mobile {
+    display: block;
+    background: $color_black;
+    padding: 0;
+  }
+
+  .conteudo.filter {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed $pedra_clara;
+    padding-bottom: 20px;
+  }
+
+  .content-order,
+  .content-filter {
+    float: left;
+    width: 360px;
+    background: white;
+    padding: 30px;
+    min-height: 100%;
+  }
+
+  .col-filter {
+    width: 100%
+  }
+
+  .col-list {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .order-filter {
+    display: block;
+  }
+
+  .title-filter {
+    width: 80%;
+    float: left;
+  }
+
+  .filter-close {
+    display: block;
+  }
+
+  .filter-close .icon-fechar {
+    font-size: 16px;
+    color: $pedra_do_mar;
+  }
+
+  .full-filter {
+    display: block;
+    background: $color_black;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    z-index: 3000;
+    overflow: scroll;
+    height: 100%;
+  }
+
+  .btn-filter {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 301px;
+    padding-bottom: 10px;
+    background: white;
+  }
+
+  .col-filter .filter-hotel.full-filter {
+    display: block;
+    height: 100%;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  .col-filter .filter-hotel.full-filter {
+    display: block;
+    // height: calc(100% - 90px);
+    height: 100%;
+    padding-bottom: 90px;
+  }
+
+  .col-filter .filter-hotel,
+  .col-filter .conteudo.filter,
+  .header-msg-mobile,
+  .order {
+    display: none;
+  }
+
+  .filter-hotel {
+    display: block;
+    height: 100%;
+  }
+
+  .order-filter {
+    display: block;
+  }
+
+  .col-list {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .title-filter {
+    color: $passeio_noturno;
+    float: left;
+    width: 88%;
+  }
+
+  .header-title {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    z-index: 4;
+    width: 100%;
+    padding: 15px;
+    padding-left: 10px;
+  }
+
+  .header-info {
+    float: left;
+    width: 80%;
+  }
+
+  .header-mobile-list {
+    display: block;
+    float: left;
+    width: 100%;
+    padding-bottom: 15px;
+    border-bottom: dashed 1px $mergulho;
+  }
+
+  .destination {
+    float: left;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+
+  .text-header {
+    font-size: 14px;
+    color: $pedra_cinza;
+    padding-top: 9px;
+    float: left;
+    padding-left: 8px;
+    font-family: Roboto;
+  }
+
+  .destination .icon-map {
+    font-size: 17px;
+    padding-right: 0px;
+    float: left;
+    padding-top: 8px;
+    color: $pedra_cinza;
+  }
+
+  .msg-plan{
+    padding-top: 30px;
+  }
+
+  .header-lupa {
+    display: block;
+    float: right;
+    width: 28px;
+    margin-top: 8px;
+    padding-right: 10px;
+    text-align: right;
+  }
+
+  .header-lupa .icon-lupa {
+    color: $color_light;
+  }
+
+  .pedra_clara {
+    padding-top: 30px;
+  }
+
+
+
+  .fc-btn-success {
+    width: 100%;
+    margin: 0;
+  }
+
+  .col-filter .conteudo.filter.view-search {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background-color: white;
+    margin: 0;
+    z-index: 2;
+    left: 0;
+    padding: 60px 0;
+    border: none;
+    border-bottom: 0;
+  }
+
+  .filter-close {
+    display: block;
+  }
+
+  .full-filter {
+    display: block;
+    width: 100%;
+    height: 90%;
+    overflow-x: scroll;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    margin: 0;
+    z-index: 3000;
+    left: 0;
+    padding: 20px;
+    margin-bottom: 89px;
+  }
+
+  .order-mobile {
+    display: block;
+  }
+
+  .btn-filter {
+    position: fixed;
+    bottom: 0;
+    height: 90px;
+    width: 100%;
+    background-color: #f5f5f5;
+    z-index: 3000;
+    left: 0;
+    display: block;
+    padding: 24px 40px 23px 40px;
+  }
+
+  .full-filter .fc-btn-success,
+  .order-mobile .fc-btn-success,
+  .view-search .fc-btn-success {
+    width: 100%;
+    margin: 0;
+  }
+}

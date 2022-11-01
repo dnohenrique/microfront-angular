@@ -1,0 +1,84 @@
+{
+    "gitflow4code.features": [
+        {
+            "name": "feature/bug-fix-re-1261",
+            "base": "develop"
+        },
+        {
+            "name": "feature/bug-fix-book-7-11",
+            "base": "develop"
+        },
+        {
+            "name": "feature/book-4",
+            "base": "develop"
+        },
+        {
+            "name": "feature/book-57",
+            "base": "develop"
+        },
+        {
+            "name": "feature/book-224",
+            "base": "develop"
+        },
+        {
+            "name": "feature/book-230",
+            "base": "develop"
+        },
+        {
+            "name": "feature/book-474",
+            "base": "develop"
+        },
+        {
+            "name": "feature/book-475",
+            "base": "develop"
+        },
+        {
+            "name": "feature/book-500",
+            "base": "develop"
+        },
+        {
+            "name": "feature/bug-fix-extra",
+            "base": "develop"
+        },
+        {
+            "name": "feature/book-496",
+            "base": "develop"
+        },
+        {
+            "name": "feature/ajuste-layout",
+            "base": "develop"
+        },
+        {
+            "name": "feature/dtf-8",
+            "base": "develop"
+        },
+        {
+            "name": "feature/ajuste-campo-busca",
+            "base": "develop"
+        },
+        {
+            "name": "feature/book-505",
+            "base": "develop"
+        },
+        {
+            "name": "feature/book-120",
+            "base": "develop"
+        },
+        {
+            "name": "feature/book-577",
+            "base": "develop"
+        },
+        {
+            "name": "feature/clean-filters",
+            "base": "develop"
+        },
+        {
+            "name": "feature/book-615",
+            "base": "develop"
+        },
+        {
+            "name": "feature/bug-fix",
+            "base": "develop"
+        }
+    ]
+}

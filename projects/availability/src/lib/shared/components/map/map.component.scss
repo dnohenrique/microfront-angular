@@ -1,0 +1,98 @@
+@import '../../../shared/assets/colors';
+.modal-header {
+  border-bottom: none;
+}
+
+.title-modal {
+  font-family: Roboto;
+  font-size: 25px;
+  font-weight: bold;
+  color: $mergulho;
+}
+
+.modal-body {
+  height: 400px;
+}
+
+
+.ol-overlaycontainer-stopevent {
+  bottom: 10px;
+  position: absolute;
+  width: 47px;
+  right: 12px;
+}
+
+.btn-zoom {
+  min-width: auto;
+  margin-bottom: 2px;
+}
+
+.my-overlay-class {
+  background: white;
+  padding: 10px;
+  border: 2px solid $pedra_clara;
+  width: 240px;
+  position: absolute;
+  top: -177px;
+  min-height: 96px;
+  right: -143px;
+}
+
+.my-overlay-class::after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid white;
+  bottom: -13px;
+  left: 36%;
+}
+
+.my-overlay-class::before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid $pedra_clara;
+  bottom: -17px;
+  left: 36%;
+}
+
+
+.map-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: $pedra_do_mar;
+  width: 91%;
+  float: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 3px;
+}
+
+.map-category {
+  float: left;
+  width: 100%;
+}
+
+.icon-estrela {
+  color: $color_secondary;
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+.icon-estrela.on {
+  color: $horizonte;
+}
+
+.map-andress {
+  float: left;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 7px;
+}

@@ -1,0 +1,2396 @@
+@import "../../../shared/assets/common.scss";
+@import "../../../shared/assets/colors.scss";
+@import "../../../shared/assets/ghost.scss";
+
+.full-width {
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.observation-booking {
+  font-size: 12px;
+  color: $pedra_do_mar;
+  font-weight: normal;
+  float: left;
+  width: 100%;
+}
+
+.payment {
+  float: left;
+  width: 40%;
+  padding: 0 27px 23px;
+  width: calc(100% - 483px);
+  background-color: #fff;
+  border: solid 1px $pedra_clara;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+
+  .title-payment {
+    font-size: 16px;
+    color: $pedra_do_mar;
+    margin-top: 18px;
+    padding-top: 0;
+    font-weight: bold;
+    float: left;
+    width: 100%;
+  }
+
+  .info-daily {
+    float: left;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .qtd-daily {
+      width: 115px;
+      margin-top: 16px;
+      align-self: center;
+
+      .qtd-daily-border {
+        position: relative;
+        width: 20px;
+        top: -22px;
+        left: -2px;
+        border-bottom: solid 0.5px $pedra_clara;
+        margin-bottom: 0;
+        z-index: 4;
+      }
+    }
+  }
+
+  .info-booking {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding-top: 0;
+
+    .title-booking {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: left;
+      color: $pedra_do_mar;
+    }
+  }
+
+  .info-option {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding-top: 15px;
+
+    .radio-payment {
+      float: left;
+      width: 100%;
+      color: $mergulho;
+      margin-bottom: 25px;
+
+      .description {
+        font-size: 16px;
+        color: $pedra_do_mar;
+      }
+
+      .fc-input-radio {
+        margin-bottom: 0;
+        padding-right: 0;
+
+        &.checked {
+          font-weight: bold;
+
+          .description {
+            color: $mergulho;
+          }
+        }
+
+        .fc-checkradio {
+          top: 3px;
+        }
+      }
+
+
+
+      .extra {
+        color: $passeio_noturno;
+      }
+    }
+  }
+
+  .fc-btn-success {
+    width: 100%;
+  }
+}
+
+.form-control[readonly] {
+  background: $color_fundo_pedra;
+  cursor: auto;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.room-border.mobile {
+  display: none;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: dashed 1px $pedra_clara;
+}
+
+.btn-back {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  background: white;
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+}
+
+.rooms {
+  float: left;
+  width: 100%;
+  margin-top: 30px;
+  padding-top: 27px;
+  border-top: dashed 1px $pedra_clara;
+}
+
+.room-title {
+  float: left;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: $pedra_do_mar;
+}
+
+.room-sub-title {
+  padding-top: 10px;
+  font-size: 14px;
+  float: left;
+  width: 100%;
+  color: $pedra_do_mar;
+}
+
+.room-field {
+  float: left;
+  width: 100%;
+  border-radius: 5px;
+  border: solid 1px $pedra_clara;
+  background-color: $color_fundo;
+  padding: 20px;
+  padding-bottom: 0;
+  border-bottom: 2px solid $horizonte;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.room-legend {
+  border-radius: 5px;
+  border: solid 1px $pedra_clara;
+  background-color: white;
+  width: auto;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 4px 10px;
+  margin-left: 17px;
+  height: 39px;
+  color: $pedra_do_mar;
+  margin: 0px;
+}
+
+.room-info {
+  float: left;
+  width: 463px;
+  height: auto;
+  border: solid 1px $pedra_clara;
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.room-description {
+  width: 100%;
+  margin: 20px;
+  padding-right: 15px;
+}
+
+.room-description-title {
+  width: 95%;
+  font-size: 16px;
+  font-weight: bold;
+  color: $pedra_do_mar;
+}
+
+.room-description-title-detail {
+  width: 100%;
+  padding-right: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: $pedra_do_mar;
+  padding-top: 20px;
+  border-bottom: dashed 1px $pedra_clara;
+}
+
+.room-description-content {
+  float: left;
+  width: 100%;
+}
+
+.room-included {
+  float: left;
+  height: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.room-hospede {
+  width: 91%;
+  margin: 20px;
+  float: left;
+  border-top: dashed 1px $pedra_clara;
+  padding-top: 25px;
+}
+
+.room-description-board {
+  font-size: 14px;
+  color: $color_light;
+  padding-bottom: 10px;
+}
+
+.room-description-board.no-board {
+  color: $pedra_cinza;
+}
+
+.room-description-board.no-board i {
+  color: $pedra_cinza;
+  padding-right: 9px;
+  float: left;
+  padding-top: 6px;
+  font-size: 10px;
+}
+
+.icon-rooms,
+.icon-hospede {
+  float: left;
+  padding-top: 10px;
+  font-size: 18px;
+}
+
+.icon-icone-pontos {
+  font-size: 25px;
+  padding-right: 10px;
+}
+
+.icon-diarias,
+.icon-point {
+  color: $mergulho;
+  font-size: 25px;
+  display: none;
+  padding-right: 5px;
+}
+
+.room-description-board i,
+.room-description-policy .icon-check {
+  font-size: 8px;
+  color: $color_light;
+  padding-right: 8px;
+  float: left;
+  padding-top: 6px;
+  height: 22px;
+}
+
+.room-description-policy {
+  float: left;
+  width: 100%;
+  font-size: 14px;
+  color: $color_light;
+}
+
+.room-description-policy.no {
+  color: $pedra_cinza;
+}
+
+.room-description-policy i {
+  font-size: 14px;
+  padding-top: 3px;
+  padding-right: 11px;
+  padding-left: 2px;
+}
+
+.room-qtd {
+  float: left;
+  width: max-content;
+  font-size: 14px;
+  font-weight: bold;
+  color: $pedra_do_mar;
+  margin-right: 20px;
+}
+
+.room-qtd .icon-text,
+.hospede-room .icon-text {
+  padding-left: 9px;
+  padding-top: 10px;
+  float: left;
+  width: max-content;
+}
+
+.room-lupa {
+  color: $mergulho;
+  width: 100%;
+  cursor: pointer;
+  float: left;
+  font-size: 14px;
+}
+
+.room-lupa i {
+  font-size: 10px;
+  padding-top: 6px;
+  padding-left: 9px;
+  padding-right: 8px;
+}
+
+.room-lupa.mobile {
+  text-align: right;
+  display: none;
+}
+
+.hospede-room {
+  float: left;
+  width: 100%;
+  margin-bottom: 40px;
+  font-size: 14px;
+  padding-top: 0px;
+  padding-left: 3px;
+}
+
+.room-money {
+  float: right;
+  width: 100%;
+}
+
+.room-money-content {
+  float: left;
+  display: flex;
+  width: 100%;
+}
+
+.room-money-content-information {
+  float: left;
+  width: 100%;
+}
+
+.dots {
+  float: left;
+  width: auto;
+  font-size: 16px;
+  min-height: 45px;
+  color: $pedra_do_mar;
+  text-align: right;
+  padding-right: 10px;
+  padding-top: 4px;
+  border-left: dashed 1px $pedra_clara;
+  padding-left: 26px;
+
+  .dots-img {
+    float: left;
+    padding-right: 8px;
+  }
+
+  .dots-description {
+    float: left;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: Roboto;
+    text-align: left;
+    max-width: 114px;
+
+    .dots-number {
+      font-size: 16px;
+      float: left;
+      width: 100%;
+    }
+  }
+}
+
+.title-quarto {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  text-align: left;
+  color: $pedra_do_mar;
+  float: left;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.room-money-qtd-rooms {
+  float: left;
+  font-size: 16px;
+  height: 45px;
+  color: $pedra_do_mar;
+  width: 88px;
+
+  div {
+    float: left;
+    width: 100%;
+  }
+}
+
+.room-money-day-plan {
+  float: left;
+  padding-left: 20px;
+  font-size: 16px;
+  color: $pedra_do_mar;
+  border-left: dashed 1px $pedra_clara;
+  padding-right: 10px;
+  min-height: 45px;
+  color: $mergulho;
+  width: 237px;
+}
+
+.room-money-day-plan.my-plan {
+  .daily {
+    padding-top: 5px;
+  }
+
+  .icon-diarias,
+  .icon-point {
+    display: block;
+  }
+}
+
+.my-plan-point .span-point {
+  float: left;
+  width: 100%;
+}
+
+.room-money-day-plan.extra {
+  color: $passeio_noturno;
+}
+
+.room-money-day-plan.point {
+  padding-top: 10px;
+}
+
+.room-money-booking {
+  float: right;
+  padding-top: 5px;
+  width: 100%;
+}
+
+.room-money-booking button {
+  width: 100%;
+}
+
+.room-info {
+  .img {
+    border-radius: 5px;
+    height: auto;
+  }
+}
+
+.img {
+  .room-description-title {
+    width: 95%;
+    font-size: 16px;
+    font-weight: bold;
+    color: $pedra_do_mar;
+  }
+
+  .room-hospede {
+    width: 225px;
+    margin: 20px 0;
+  }
+
+  .room-description {
+    margin: 0;
+    width: 100%;
+    float: left;
+    border-right: none;
+    margin: 0 20px;
+    padding-right: 15px;
+
+  }
+
+  .room-hospede {
+    border-top: none;
+    width: 196px;
+    margin: 0;
+    padding-top: 0;
+    float: left;
+  }
+
+  .room-included {
+    padding-top: 10px;
+    width: calc(100% - 196px);
+  }
+
+  .room-description-board {
+    padding-bottom: 7px;
+    float: left;
+    width: 209px;
+
+    div {
+      width: 100%;
+    }
+  }
+
+  .room-description-title {
+    border: none;
+    padding-bottom: 10px;
+    border-right: none;
+    padding-top: 20px;
+    padding-left: 20px;
+    float: left;
+  }
+}
+
+.room-img {
+  width: 100%;
+  height: 218px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  float: left;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.loading-text-list {
+  margin-top: 0;
+  margin-bottom: 30px;
+  padding-top: 20px;
+}
+
+.msg-empty {
+  width: 100%;
+  float: left;
+  margin-top: 40px;
+  text-align: center;
+
+  img {
+    width: 171.9px;
+    height: 106.1px;
+  }
+
+  .title {
+    width: 100%;
+    float: left;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 25px;
+    padding-bottom: 13px;
+    text-align: center;
+  }
+
+  .sub-title {
+    width: 100%;
+    float: left;
+    font-family: Roboto;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+fc-availability-pagination {
+  margin-top: 10px;
+  float: left;
+  width: 100%;
+}
+
+.room-name {
+  margin-top: 20px;
+}
+
+.loading-information {
+
+  .cancel,
+  .room-legend,
+  .title-quarto,
+  .room-description-title,
+  .room-description-policy,
+  .room-qtd,
+  .room-description-board,
+  .hospede-room,
+  .payment .title-payment,
+  .payment .info-daily,
+  .observation-booking,
+  .room-money-qtd-rooms,
+  .room-money-day-plan,
+  .room-money-booking .fc-btn {
+    background-color: #f5f5f5;
+    border-bottom: 3px solid white;
+    border-radius: 4px 4px 4px 4px;
+    @include background-gradient;
+    @include animate-ghost-line;
+    height: 30px;
+    margin-bottom: 20px;
+    border: none;
+    color: rgba(0, 0, 0, 0);
+  }
+
+  .room-money-booking .fc-btn {
+    cursor: initial;
+  }
+
+  .room-sub-title,
+  .icon-check,
+  .dots,
+  .room-lupa,
+  .icon-alerta,
+  .icon-diarias,
+  .icon-point,
+  fc-availability-pagination {
+    display: none;
+  }
+
+  .room-qtd {
+    margin-top: 10px;
+    width: max-content;
+  }
+
+  .room-money-booking {
+    padding: 0;
+    padding-left: 10px;
+  }
+
+  .room-money-qtd-rooms {
+    margin-right: 10px;
+  }
+
+  .hospede-room {
+    width: 90%;
+  }
+
+  .item-money {
+    padding-top: 116px;
+  }
+
+  .room-title {
+    width: 244px;
+    float: none;
+  }
+
+  .room-sub-title {
+    width: 283px;
+    float: none;
+  }
+
+  .icon-check,
+  .room-description-board.no-board i {
+    color: rgba(0, 0, 0, 0);
+  }
+
+  .room-img,
+  .radio-payment {
+    color: rgba(0, 0, 0, 0);
+    background-color: #f5f5f5;
+    background-image: none;
+    @include background-gradient;
+    @include animate-ghost-line;
+  }
+
+  @media screen and (max-width: 872px) {
+    .room-money-booking {
+      padding-left: 0;
+    }
+  }
+}
+
+.empty-msg {
+  color: $pedra_clara;
+}
+
+.fc-alert-warning {
+  float: left;
+  margin-top: 30px;
+  width: 100%;
+
+  .reload-page {
+    cursor: pointer;
+    border-bottom: 1px solid;
+  }
+}
+
+.row-input {
+  margin-bottom: 30px;
+}
+
+.row-rooms {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+  width: 40%;
+  float: left;
+}
+
+/*#region - Date Picker*/
+.calendar-style {
+  position: relative;
+}
+
+.icon-calendar {
+  padding-top: 3px;
+  font-size: 17px;
+  padding-left: 2px;
+}
+
+.page-list .icon-calendar {
+  padding-left: 0;
+  font-size: 17px;
+  padding-right: 0;
+}
+
+.input-error .icon-calendar {
+  color: $ceu_de_pipa;
+}
+
+.calendar-style .input-group-text {
+  border: 1px solid $pedra_clara;
+  border-right: none;
+}
+
+.fc-input-group-text.rooms-focus,
+.calendar-style .input-group-text.calendar-focus {
+  border: 1px solid $mergulho;
+  color: $mergulho;
+  background-color: white;
+}
+
+.calendar-style .input-error input.form-control {
+  outline: none;
+  border: 1px solid $ceu_de_pipa;
+  border-left: none;
+  caret-color: $ceu_de_pipa;
+}
+
+.page-list .calendar-style .input-group-text {
+  padding-left: 8px;
+  padding-right: 3px;
+}
+
+.calendar-style .input-error .input-group-text {
+  border: 1px solid $ceu_de_pipa;
+  border-right: none;
+}
+
+.calendar-style .input-group-prepend {
+  border-right: none;
+  height: 40px;
+  padding-top: 0;
+}
+
+.calendar-style .form-control {
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: normal;
+  color: $pedra_cinza;
+  padding-left: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 40px;
+  border: solid 1px $pedra_clara;
+  border-left: none;
+  background-color: $color_fundo_pedra;
+}
+
+.page-list .calendar-style .input-group-prepend,
+.page-list .calendar-style .form-control {
+  height: 40px;
+  font-size: 15px;
+}
+
+.calendar-style .form-control.form-control-focus {
+  background-color: white;
+  border-color: $mergulho;
+}
+
+.calendar-style .ckeckin {
+  float: left;
+  padding-right: 7.5px;
+  width: 20%;
+}
+
+.calendar-style .ckeckout {
+  float: left;
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+  width: 20%;
+}
+
+.calendar-style .ckeckin.full,
+.calendar-style .ckeckout.full {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.date-column-input {
+  width: 50%;
+  float: left;
+}
+
+.date-column-input.checkout {
+  padding-left: 10px;
+}
+
+.custom-select {
+  background-color: $color_fundo_pedra;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  color: $pedra_cinza;
+}
+
+.custom-select option:hover {
+  background-color: $mergulho;
+  color: white;
+}
+
+.balloon-calendar {
+  margin: 0 auto;
+  line-height: 1.6em;
+  height: auto;
+  color: $color_fundo_calendar;
+  position: absolute;
+  top: 60px;
+  -moz-transition: opacity 0.25s ease-out, visibility 0.25s;
+  -o-transition: opacity 0.25s ease-out, visibility 0.25s;
+  -webkit-transition: opacity 0.25s ease-out, visibility 0.25s;
+  transition: opacity 0.25s ease-out, visibility 0.25s;
+  opacity: 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  z-index: 1;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px $pedra_clara;
+  background-color: white;
+}
+
+.balloon-calendar.calendar-room {
+  top: 105px;
+}
+
+.balloon-calendar.calendar-room.simulator {
+  top: 199px;
+}
+
+.page-list .balloon-calendar {
+  top: 54px;
+  left: -26px;
+}
+
+.page-list .balloon-calendar::before,
+.page-list .balloon-calendar::after {
+  left: 23px;
+}
+
+.balloon-calendar::before {
+  /*Triangulo*/
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid $pedra_clara;
+  top: -20px;
+  left: 1%;
+}
+
+.balloon-calendar::after {
+  /*Triangulo*/
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  top: -21px;
+  bottom: auto;
+  position: absolute;
+  left: 1%;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid $color_fundo_calendar;
+  border-style: solid;
+  border-color: $color_fundo_calendar transparent;
+}
+
+.balloon-calendar.checkout::before,
+.balloon-calendar.checkout::after {
+  right: 35%;
+  left: auto;
+}
+
+.page-list .balloon-calendar.checkout-list {
+  top: 112px;
+}
+
+.balloon-calendar-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.balloon-calendar ngb-datepicker {
+  border: none;
+}
+
+.calendar-focus {
+  background-color: white;
+}
+
+.calendar-focus i {
+  color: $mergulho;
+}
+
+/*#endregion*/
+
+/*#region - DropDown Quartos*/
+
+#addQuartoFilterRoom-text {
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 17px;
+  font-family: Roboto;
+  font-size: 16px;
+  // font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+}
+
+.room-input {
+  width: 100%;
+  height: 40px;
+}
+
+.page-list .room-input {
+  height: 40px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.rooms .font-default {
+  color: $pedra_cinza;
+  font-weight: normal;
+  font-size: 15px;
+  padding-top: 3px;
+  float: left;
+  padding-left: 10px;
+  padding-bottom: 0;
+  padding-right: 0;
+  font-family: Roboto;
+}
+
+.page-list .rooms .font-default {
+  font-size: 15px;
+  padding-top: 7px;
+  padding-left: 1px;
+}
+
+.pax .font-default {
+  color: $pedra_cinza;
+  font-weight: normal;
+  font-size: 15px;
+  float: left;
+  font-family: Roboto;
+  padding: 5px 0 0 9px;
+  padding-top: 3px;
+}
+
+.page-list .pax .font-default {
+  font-size: 15px;
+  padding: 6px 0 0 6px;
+}
+
+.page-list .rooms i {
+  padding-right: 3px;
+  padding-left: 8px;
+  font-size: 18px;
+  padding-top: 4px;
+}
+
+.pax i {
+  padding-top: 3px;
+  font-size: 17px;
+}
+
+.page-list .pax i {
+  font-size: 13px;
+}
+
+.input-group-text {
+  padding: 8px;
+}
+
+.legenda-room {
+  width: 54%;
+  float: left;
+}
+
+.number {
+  margin-bottom: 5px;
+  width: 45%;
+  float: left;
+}
+
+.qtd {
+  height: 30px;
+  margin-top: 15px;
+}
+
+.btn-group {
+  width: 100%;
+}
+
+.btn-add {
+  width: 70%;
+  float: left;
+}
+
+.btn-apply {
+  width: 30%;
+  float: left;
+}
+
+.btn-custom {
+  width: 100%;
+  background: white;
+  color: inherit;
+  text-align: left;
+  border: 1px solid $pedra_clara;
+  border-radius: 0.25rem;
+}
+
+.balloon {
+  margin: 0 auto;
+  background: white;
+  line-height: 1.6em;
+  height: auto;
+  color: $color_fundo_calendar;
+  padding: 20px;
+  position: absolute;
+  margin-top: 60px;
+  -moz-transition: opacity 0.25s ease-out, visibility 0.25s;
+  -o-transition: opacity 0.25s ease-out, visibility 0.25s;
+  -webkit-transition: opacity 0.25s ease-out, visibility 0.25s;
+  transition: opacity 0.25s ease-out, visibility 0.25s;
+  opacity: 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  z-index: 1;
+  width: 314px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px $pedra_clara;
+  background-color: white;
+  left: 0;
+  display: none;
+}
+
+.balloon::before {
+  /*Triangulo*/
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid $pedra_clara;
+  top: -20px;
+  left: 1%;
+}
+
+.balloon::after {
+  /*Triangulo*/
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  top: -21px;
+  bottom: auto;
+  position: absolute;
+  left: 1%;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid $pedra_clara;
+  border-style: solid;
+  border-color: white transparent;
+}
+
+.list {
+  background-color: white;
+}
+
+.balloon .list {
+  padding: 0;
+}
+
+.balloon .list li {
+  display: inherit;
+}
+
+.balloon-open {
+  opacity: 1;
+  display: block;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  text-align: left;
+  color: $pedra_cinza;
+}
+
+.sub-title {
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.17;
+  letter-spacing: normal;
+  text-align: left;
+  color: $pedra_cinza;
+  padding-top: 5px;
+}
+
+.title-child {
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: left;
+  color: $pedra_cinza;
+  padding-top: 10px;
+}
+
+.btn-room {
+  height: 17px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: left;
+  color: $mergulho;
+  cursor: pointer;
+  float: left;
+}
+
+.btn-room.disabled {
+  color: $color_disabled;
+  cursor: default;
+}
+
+.btn-room .ico {
+  font-size: 29px;
+  float: left;
+  font-weight: bold;
+}
+
+.btn-room .text-btn {
+  float: left;
+  // padding: 10px;
+}
+
+.form-row {
+  margin-left: 0px;
+}
+
+.divider.dropdown-divider {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.title-room {
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  text-align: left;
+  color: $mergulho;
+  margin-bottom: 20px;
+  float: left;
+  width: 70%;
+}
+
+.btn-eliminar {
+  text-align: right;
+  float: right;
+  width: 30%;
+  padding-right: 4px;
+  margin-top: -5px;
+}
+
+.fc-btn-danger {
+  min-width: 70px;
+  height: 30px;
+  margin-bottom: 16px;
+  font-size: 12px;
+}
+
+.btn-eliminar i {
+  float: right;
+  color: $ceu_de_pipa;
+  cursor: pointer;
+  padding-top: 0;
+}
+
+.fc-input-group-text {
+  background-color: $color_fundo_pedra;
+  padding-right: 8px;
+  border-radius: 5px;
+  border: solid 1px $pedra_clara;
+  padding: 5px;
+}
+
+.text-rooms {
+  display: grid;
+  grid-template-columns: 47% 52%;
+  grid-template-rows: 100%;
+  padding-bottom: 5px;
+  padding-top: 3px;
+}
+
+.text-rooms .filter-rooms {
+  float: left;
+  width: 100%;
+  text-align: left;
+  height: 38px;
+  padding-top: 4px;
+}
+
+.text-rooms .filter-rooms .icon-rooms {
+  padding-top: 3px;
+  font-size: 17px;
+}
+
+.page-list .text-rooms .filter-rooms {
+  padding-top: 0;
+}
+
+.text-rooms .pax {
+  float: left;
+  text-align: left;
+  border-left: 1px solid #dcdbdb;
+  padding-left: 12px;
+  height: 100%;
+  width: 100%;
+  height: 32px;
+  padding-top: 4px;
+}
+
+.page-list .text-rooms .pax {
+  height: auto;
+  padding-top: 0;
+  padding-top: 3px;
+}
+
+/*#endregion*/
+
+.rooms-focus i,
+.rooms-focus .font-default,
+.city-focus,
+.txt-search input:focus,
+.calendar-style input:focus {
+  color: $mergulho;
+}
+
+.form-control:focus,
+.form-control-focus {
+  box-shadow: none;
+  border-color: $mergulho;
+  background-color: white;
+  color: $pedra_cinza;
+}
+
+.input-group-prepend .input-group-text {
+  background-color: $color_fundo_pedra;
+}
+
+.focus-destination .input-group-prepend .input-group-text {
+  background-color: white;
+}
+
+.input-group-prepend .input-group-text img {
+  width: 22.3px;
+  height: 22px;
+  object-fit: contain;
+}
+
+i {
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  float: left;
+}
+
+.icon-alerta {
+  float: none;
+}
+
+.icon-fechar {
+  padding-top: 10px;
+  padding-right: 20px;
+  float: right;
+}
+
+.icon-rooms {
+  padding-left: 3px;
+}
+
+.title-page {
+  padding-bottom: 10px;
+  float: left;
+  width: 100%;
+  font-weight: bold;
+  padding: 20px;
+  font-size: 26px;
+  text-align: center;
+  line-height: 1.46;
+  color: $pedra_do_mar;
+  background: white;
+}
+
+.section-filter {
+  background: white;
+}
+
+.form-control[readonly] {
+  background: $color_fundo_pedra;
+  cursor: auto;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.header-lupa-filter {
+  display: none;
+  float: right;
+  width: 40px;
+  cursor: pointer;
+  margin-top: -4px;
+}
+
+.header-lupa-filter .icon-lupa {
+  font-size: 16px;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: $mergulho;
+  margin-top: 4px;
+  padding: 7px;
+}
+
+.room-nova-pesquisa {
+  float: left;
+  width: 20%;
+  padding-left: 7.5px;
+}
+
+.room-nova-pesquisa .fc-btn {
+  width: 100%;
+  padding: 0 10px;
+}
+
+.page-list {
+  height: 100%;
+}
+
+.description-room {
+  font-weight: bold;
+  padding-bottom: 19px;
+  padding-top: 20px;
+}
+
+.detail-room ul {
+  width: 100%;
+  padding-top: 1px;
+  padding-left: 20px;
+}
+
+.detail-room ul li {
+  width: 50%;
+  float: left;
+  color: #00b0b0;
+}
+
+.detail-room ul li span {
+  color: initial;
+}
+
+.selectedSlide {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: block;
+  height: 468px;
+  margin: auto;
+  padding-bottom: 20px;
+  max-width: 92.1%;
+}
+
+.next {
+  right: 5px !important;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  width: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  transition: 0.6s ease;
+  user-select: none;
+  background: hsla(0, 0%, 100%, 0.6);
+  height: 468px;
+  padding-top: 29%;
+  background-color: $color_secondary;
+  border-radius: 0;
+  padding-left: 9px;
+}
+
+.pagination {
+  float: right;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+  color: $pedra_do_mar;
+  text-align: right;
+  display: block;
+}
+
+.next {
+  right: 0;
+}
+
+.prev:hover,
+.next:hover {
+  cursor: pointer;
+  background-color: $color_light_grey_blue;
+  color: white !important;
+}
+
+.images-hotel {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  float: left;
+  height: 448px;
+}
+
+.show-detail {
+  cursor: pointer;
+}
+
+@media (max-width: 991px) {
+  .detail-room ul li {
+    width: 100%;
+    float: left;
+  }
+
+  .selectedSlide {
+    max-width: 100%;
+    height: 330px;
+  }
+
+  .next,
+  .prev {
+    cursor: pointer;
+    position: absolute;
+    top: 150px;
+    height: 65px;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    -webkit-transition: 0.6s ease;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: rgba(255, 255, 255, 0.6);
+  }
+}
+
+@media (min-width: 801px) {
+  .modal-image {
+    margin: 20px 0px 20px 20px;
+  }
+
+  .modal-text {
+    position: relative;
+    top: -400px;
+    left: 340px;
+    width: 380px;
+  }
+
+  .modal-body {
+    overflow: hidden;
+    scroll-behavior: smooth;
+    position: relative;
+  }
+
+  .modal-content {
+    // width: 770px;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 800px) {
+  .modal-image {
+    top: 10px;
+    margin: auto;
+    display: block;
+  }
+
+  .modal-shadow {
+    padding-top: 15px;
+    /* Location of the box */
+  }
+
+  .modal-body {
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .modal-content {
+    width: 90%;
+    //height: 95%;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 425px) {
+  .selectedSlide {
+    height: 260px;
+  }
+
+  .next,
+  .prev {
+    top: 115px;
+  }
+}
+
+/* IE9, IE10, IE11 */
+@media screen and (min-width: 0\0) {
+  .loading-complete {
+    right: 10px;
+  }
+}
+
+/* Medium */
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .ngx-select__item {
+    padding: 12px 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .page-list .balloon-calendar.checkout-list {
+    left: auto;
+    right: 0;
+    top: 45px;
+  }
+
+  .page-list .balloon-calendar.checkout-list::after,
+  .page-list .balloon-calendar.checkout-list::before {
+    right: 66%;
+    left: auto;
+  }
+
+  .page-list .loading-complete {
+    width: 20px;
+    height: 20px;
+    margin-top: -2px;
+    margin-right: 7px;
+  }
+
+  .page-list .title {
+    font-size: 18px;
+  }
+
+  .page-list .balloon {
+    margin-top: 50px;
+  }
+
+  .page-list .icon-hospede {
+    padding-top: 2px;
+    padding-left: 3px;
+    font-size: 17px;
+  }
+
+  .page-list .pax .font-default {
+    padding-top: 2px;
+  }
+
+  .page-list .rooms .font-default {
+    padding-top: 4px;
+    padding-right: 3px;
+  }
+
+  .page-list .balloon-calendar::after,
+  .page-list .balloon-calendar::before {
+    left: 28%;
+  }
+
+  .page-list .balloon-calendar.checkout-list::after,
+  .page-list .balloon-calendar.checkout-list::before {
+    right: 36%;
+  }
+
+  .page-list .input-group-text {
+    padding-top: 0;
+    padding-left: 9px;
+    height: 30px;
+  }
+
+  .page-list #destantion .input-group-text {
+    height: 24px;
+    padding-top: 4px;
+  }
+
+  .page-list #destantion {
+    float: left;
+    width: 25%;
+  }
+
+  .page-list #room {
+    float: left;
+    width: 33%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .page-list #datepicker {
+    float: left;
+    width: 40%;
+    padding: 0;
+  }
+
+  .page-list .balloon-calendar {
+    top: 50px;
+  }
+
+  .page-list .calendar-style .ckeckin.full,
+  .page-list .calendar-style .ckeckout.full {
+    width: 47%;
+    margin-right: 5px;
+  }
+
+  .page-list .icon-calendar {
+    padding-top: 8px;
+    font-size: 15px;
+  }
+
+  .page-list .calendar-style .form-control,
+  .page-list .calendar-style .input-group-prepend {
+    height: 30px;
+    background: white;
+  }
+
+  .page-list .btn-search {
+    display: none;
+  }
+
+  .page-list .text-rooms {
+    grid-template-columns: 48% 51%;
+  }
+
+  .page-list .text-rooms .filter-rooms {
+    height: 100%;
+    padding-top: 1px;
+  }
+
+  .page-list .room-input {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    background-color: $color_fundo_pedra;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .page-list .text-rooms .pax {
+    height: 22px;
+    margin-top: 3px;
+    padding-top: 0;
+    padding-left: 3px;
+  }
+
+  .page-list .icon-rooms {
+    padding-top: 4px;
+    padding-left: 3px;
+    font-size: 17px;
+  }
+
+  .page-list .font-default {
+    font-size: 15px;
+    padding-left: 4px;
+    padding-top: 2px;
+  }
+
+  .page-list .icon-map {
+    font-size: 15px;
+  }
+
+  .page-list .header-lupa-filter {
+    display: block;
+  }
+
+  .room-nova-pesquisa .header-lupa-filter {
+    display: none;
+  }
+}
+
+.text-mobile {
+  display: none;
+}
+
+.extra-only {
+  display: block;
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 1.1;
+  padding-top: 2px;
+}
+
+.none-border-right {
+  border-right: none;
+  padding-right: 0;
+}
+
+.plans {
+  float: left;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.label-text {
+  float: left;
+  width: 100%;
+  font-family: Roboto;
+  font-size: 16px;
+  color: $pedra_cinza;
+  padding-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Mobile */
+@media only screen and (max-width: 872px) {
+  .payment {
+    width: 100%;
+    position: relative;
+    top: 0;
+    padding-top: 20px;
+    margin-top: 25px;
+    margin-left: 0;
+    min-height: auto;
+  }
+
+  .room-description-mobile {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(100% - 23px);
+  }
+
+  .rooms {
+    border-top: dashed 1px $mergulho;
+  }
+
+  .room-field {
+    padding: 15px;
+    padding-bottom: 30px;
+    margin-top: 20px;
+  }
+
+  .room-title {
+    color: $passeio_noturno;
+  }
+
+  .room-description {
+    position: relative;
+    display: block;
+    border-right: none;
+    border-bottom: dashed 1px $pedra_clara;
+    padding: 0px;
+    padding-bottom: 10px;
+    margin: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .room-description-title {
+    display: block;
+    float: left;
+    margin-top: 0px;
+    padding-right: 0;
+    width: 95%;
+    border-right: none;
+  }
+
+  .room-description-content {
+    display: inline-block;
+  }
+
+  .room-description-title,
+  .room-description-board,
+  .room-description-policy {
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .room-included {
+    float: left;
+    width: 100% !important;
+    position: relative;
+    height: max-content;
+    padding-left: 0px;
+    border-left: none;
+    height: 100%;
+  }
+
+  .room-hospede {
+    width: calc(100% - 60px);
+    max-width: 100%;
+    margin: 0 20px 20px;
+  }
+
+  .room-lupa.desktop {
+    display: none;
+  }
+
+  .room-lupa.mobile {
+    float: right;
+    margin-top: -60px;
+    display: block;
+  }
+
+  .room-lupa.mobile.photo {
+    float: right;
+    margin-top: -90px;
+    margin-right: 20px;
+    display: block;
+  }
+
+  .room-qtd,
+  .icon-text,
+  .hospede-room {
+    width: max-content;
+    padding-top: 0;
+  }
+
+  .room-info {
+    .img {
+      height: auto;
+      padding-bottom: 20px;
+      min-height: 450px;
+    }
+  }
+
+  .payment.img-payment {
+    min-height: 450px;
+  }
+
+  .img {
+
+
+    .room-img {
+      width: 100%;
+      border-top-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    .room-qtd {
+      max-width: 180px;
+      padding-top: 0;
+      width: max-content;
+    }
+
+    .icon-rooms,
+    .icon-hospede {
+      font-size: 21px;
+    }
+
+    .hospede-room {
+      width: calc(100% - 117px);
+    }
+
+    .room-description {
+      width: 100%;
+      padding: 0px;
+      border: none;
+    }
+
+    .room-qtd .icon-text {
+      padding-left: 7px;
+      padding-top: 12px;
+      float: left;
+      width: max-content;
+    }
+
+    .hospede-room .icon-text {
+      padding-top: 12px;
+      width: 82%;
+    }
+
+    .room-hospede {
+      width: 90%;
+      margin: 0;
+      border: none;
+      background-color: white;
+      border-top: 1px dashed $pedra_clara;
+      padding-top: 10px
+    }
+
+    .room-description-policy {
+      padding-bottom: 20px;
+    }
+
+    .room-description-board {
+      padding-bottom: 7px;
+      width: 100%;
+    }
+
+    .room-description-title {
+      width: 100%;
+      padding-right: 0;
+    }
+
+    .room-border.mobile {
+      display: block;
+    }
+  }
+
+  .room-money {
+    float: left;
+    width: 100%;
+  }
+
+  .room-field {
+    padding: 15px;
+    display: block;
+  }
+
+  .room-money-day-plan.my-plan,
+  .room-money-day-plan.point {
+    padding-top: 0;
+    width: 100%;
+  }
+
+  .room-money-qtd-rooms {
+    color: $color_off;
+  }
+
+  .daily {
+    font-size: 16px;
+  }
+
+  .icon-diarias,
+  .icon-point {
+    padding-right: 10px;
+    padding-left: 0;
+  }
+
+  .text-desktop {
+    display: none;
+  }
+
+  .text-mobile {
+    display: contents;
+  }
+
+  .span-point {
+    display: block;
+  }
+
+  .dots,
+  .room-money-qtd-rooms,
+  .room-money-day-plan {
+    width: 100%;
+    border: none;
+    float: left;
+    text-align: left;
+    padding: 0;
+    height: auto;
+    font-size: 16px;
+  }
+
+  .room-money-qtd-rooms {
+    font-size: 14px;
+  }
+
+  .dots {
+    .dots-img {
+      padding-top: 6px;
+      margin-bottom: 20px;
+    }
+
+    .dots-description {
+      width: calc(100% - 39px);
+
+      .dots-number {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .room-money-content {
+    width: 100%;
+    display: block;
+    position: relative;
+  }
+
+  .room-info {
+    margin-bottom: 0;
+    width: 100%;
+    min-height: auto;
+  }
+
+  .title-quarto {
+    margin-top: 20px;
+  }
+
+  .room-money-booking {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+
+    button {
+      margin-top: 0;
+      width: 100%;
+      min-width: auto;
+    }
+  }
+
+  .calendar-style .ckeckin {
+    width: 50%;
+    padding-left: 0;
+    padding-right: 7.5px;
+    margin-bottom: 20px;
+  }
+
+  .calendar-style .ckeckout {
+    width: 50%;
+    padding-left: 7.5px;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .row-rooms {
+    width: 70%;
+    padding-left: 0;
+    padding-right: 7.5px;
+  }
+
+  .room-nova-pesquisa {
+    width: 30%;
+    padding-left: 7.5px;
+  }
+
+  .room-nova-pesquisa .header-lupa-filter {
+    display: none;
+  }
+
+  .room-money-content-information {
+    padding-left: 0;
+    padding-right: 10px;
+    width: 100%;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 657px) {
+  .btn-back {
+    display: block;
+  }
+
+  .btn-search {
+    margin-bottom: 20px;
+    padding-top: 0px;
+  }
+
+  .title-page {
+    font-size: 18px;
+    text-align: left;
+    color: $passeio_noturno;
+    line-height: 1;
+  }
+
+  .col-auto {
+    margin-bottom: 20px;
+  }
+
+  .calendar-style .ckeckin {
+    width: 50%;
+    padding-left: 0;
+    padding-right: 7.5px;
+    margin-bottom: 20px;
+  }
+
+  .calendar-style .ckeckout {
+    width: 50%;
+    padding-left: 7.5px;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .row-rooms {
+    width: calc(100% - 40px);
+    padding-left: 0;
+    padding-right: 15px;
+  }
+
+  .room-nova-pesquisa {
+    width: 40px;
+    padding-left: 7.5px;
+    padding-right: 0;
+  }
+
+  .room-nova-pesquisa button {
+    display: none;
+  }
+
+  .ngx-select__item {
+    padding: 12px 20px;
+  }
+
+  .focus-destination {
+    padding: 5px;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: white;
+    z-index: 11;
+    left: 0;
+  }
+
+  .section-filter {
+    height: 400px;
+    width: 100%;
+  }
+
+  .rooms .font-default,
+  .pax .font-default,
+  .calendar-style .form-control {
+    font-size: 16px;
+  }
+
+  .balloon::after,
+  .balloon::before,
+  .balloon-calendar::after,
+  .balloon-calendar::before,
+  .balloon-calendar.checkout::after,
+  .balloon-calendar.checkout::before,
+  .header-lupa-filter {
+    display: none;
+  }
+
+  .room-nova-pesquisa .header-lupa-filter {
+    display: block;
+  }
+
+  .header-lupa-filter .icon-lupa {
+    font-size: 16px;
+    color: #00b0b0;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: white;
+    border-color: #00b0b0;
+    padding: 10px;
+    border: 1px solid #00b0b0;
+  }
+
+  .view-rooms {
+    width: 100%;
+    position: absolute;
+    z-index: 1001;
+    left: 0;
+    background: white;
+    margin: 0;
+    padding: 5px;
+    top: 36px;
+  }
+
+  .balloon-calendar,
+  .balloon-calendar.checkout {
+    left: 0;
+  }
+
+  .balloon-calendar-focus {
+    margin: 0;
+    padding-top: 5px;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    background: #fff;
+    z-index: 1001;
+    left: 0;
+    float: left;
+    box-shadow: none;
+  }
+
+  .balloon-calendar-focus.calendar-mobile {
+    padding: 5px !important;
+    top: 36px;
+  }
+
+  .balloon-calendar.calendar-room.calendar-mobile {
+    top: 40px !important;
+  }
+
+  .balloon-calendar {
+    box-shadow: none;
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    margin-top: 74px;
+  }
+
+  .page-list .balloon-calendar {
+    left: 0;
+  }
+
+  .page-list .balloon-calendar.checkout-list {
+    top: 54px;
+  }
+
+  .balloon.balloon-open {
+    position: absolute;
+    z-index: 2;
+    top: 51px;
+    box-shadow: none;
+    float: left;
+    left: 0;
+    //
+    border-radius: 5px;
+    border: 1px solid #dcdcdc;
+    height: max-content;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  ngb-datepicker {
+    width: 100%;
+    float: left;
+  }
+
+  .btn-search {
+    width: 100%;
+    padding: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .fc-btn-success {
+    width: 100%;
+  }
+}
+
+// @media only screen and (max-width: 399px) {
+//   .room-money-content-information {
+//     width: 100%;
+//   }
+
+//   .room-money-booking {
+//     width: 100%;
+//   }
+
+//   .room-money-booking button {
+//     width: 100%;
+//   }
+
+//   .room-money-content {
+//     display: contents;
+//   }
+// }
+
+@media only screen and (max-width: 426px) {
+  .selectedSlide {
+    height: 240px;
+  }
+
+  .next,
+  .prev {
+    top: 115px;
+  }
+}
+
+// Adaptação do IE
+@media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
+  .text-rooms {
+    display: block;
+  }
+
+  .text-rooms .filter-rooms {
+    width: 49%;
+  }
+
+  .text-rooms .pax {
+    width: 48%;
+  }
+}
+
+
+::ng-deep {
+  .disabled {
+    color: $pedra_clara !important;
+  }
+}

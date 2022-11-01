@@ -1,0 +1,63 @@
+<div class="list">
+  <div class="item" *ngFor="let h of viewHotels">
+    <div class="item-img"
+      [ngStyle]="{'background-image': 'url(' + (h.imageUrl !== '' ? h.imageUrl : common.hotelNotImage)  + ')' }">
+    </div>
+    <div class="item-info">
+      <div class="title-hotel" title="{{h.name}}">
+        {{h.name}}
+      </div>
+      <div class="address">
+        {{h.anddress}} - {{entity.hotelSimulatorFilter.destinationText}}
+      </div>
+      <div class="category">
+        <i class="icon-estrela" [ngClass]="{on: h.category > i }"
+          *ngFor="let item of common.getNumberToArray(5); let i = index"></i>
+      </div>
+    </div>
+    <div class="item-money" (click)="goToDetail(h)">
+
+      <div class="detail">
+        <button type="button" id="btnDetail" class="fc-btn fc-btn-light">
+          Ver detalhes
+        </button>
+      
+      </div>
+    </div>
+  </div>
+
+  <!--PAGINAÇÃO-->
+  <div class="box-pagination" *ngIf="dataCount > 0">
+    <span class="page-title">Página {{pageNumber}} de {{pageCount}}</span>
+    <div class="pagination-position">
+    <button type="button" id="firt" class="btn-pagination-seta" (click)="firstPage()"
+      [disabled]="pageNumber === 1 || dataCount === 0">
+      <!-- <i class="icon-seta-left"></i>
+      <i class="icon-seta-left"></i> -->
+      <span class="pagination-arrow">&laquo;</span>
+    </button>
+
+    <button type="button" id="back" class="btn-pagination-seta" (click)="backPage()"
+      [disabled]="pageNumber === 1 || dataCount === 0">
+      <!-- <i class="icon-seta-left"></i> -->
+      <span class="pagination-arrow">&lsaquo;</span>
+    </button>
+
+    <button type="button" id="go" class="btn-pagination" (click)="goTo(btn.page)" *ngFor="let btn of paginationButtons"
+      [ngClass]="{'current-page': (btn.page === pageNumber)}">
+      {{btn.page}}
+    </button>
+    <button type="button" id="next" class="btn-pagination-seta" (click)="nextPage()"
+      [disabled]="pageNumber === pageCount || dataCount === 0">
+      <!-- <i class="icon-seta-right"></i> -->
+      <span class="pagination-arrow">&rsaquo;</span>
+    </button>
+    <button type="button" id="last" class="btn-pagination-seta" (click)="lastPage()"
+      [disabled]="pageNumber === pageCount || dataCount === 0">
+      <!-- <i class="icon-seta-right"></i>
+      <i class="icon-seta-right"></i> -->
+      <span class="pagination-arrow">&raquo;</span>
+    </button>
+    </div>
+  </div>
+</div>

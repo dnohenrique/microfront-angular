@@ -1,0 +1,285 @@
+@import "../../../shared/assets/colors";
+
+.selectedSlide {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: block;
+  height: 468px;
+  margin: auto;
+  padding-bottom: 20px;
+  max-width: 92.1%;
+}
+
+.gallery {
+  margin-top: 20px;
+  width: 20000px;
+  overflow: hidden;
+  min-height: 80px;
+  position: relative;
+  transition: left 0.5s ease-out;
+}
+
+.mySlides {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  margin-right: 10px;
+  transition: width 0.3s ease;
+  height: 65px;
+  border-radius: 5px;
+}
+
+.mySlides:hover {
+  cursor: pointer;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  width: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  transition: 0.6s ease;
+  user-select: none;
+  background: hsla(0, 0%, 100%, 0.6);
+  height: 468px;
+  padding-top: 29%;
+  background-color: $color_secondary;
+  border-radius: 0;
+  padding-left: 9px;
+}
+
+.pagination {
+  float: right;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+  color: $pedra_do_mar;
+  text-align: right;
+  display: block;
+}
+
+.next {
+  right: 0;
+}
+
+.prev:hover,
+.next:hover {
+  cursor: pointer;
+  background-color: $color_light_grey_blue;
+  color: white !important;
+}
+
+.images-hotel {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  float: left;
+  height: 448px;
+}
+
+.title-modal {
+  font-family: Roboto;
+  font-size: 25px;
+  font-weight: bold;
+  color: $mergulho;
+}
+
+.room-name {
+  margin-top: 30px;
+}
+
+////////////////////////////////////////////////////////
+/* The Modal (background) */
+.modal-shadow {
+  //display: none; /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  //z-index: 1; /* Sit on top */
+  z-index: 1000;
+  /* Sit on top */
+  padding-top: 4%;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  width: 90%;
+  max-width: 799.3px;
+  height: auto;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin: auto;
+  z-index: 1001;
+  /* Sit on top */
+  border-radius: 5px;
+  // box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.modal-line {
+  width: 100%;
+  border-top: solid 1.2px rgba(0, 0, 0, 0.16);
+}
+
+hr {
+  margin: 0;
+}
+
+.modal-header {
+  border-bottom: none;
+  padding: 20px 0 0 0;
+  font-family: Roboto;
+  font-size: 25px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: $mergulho;
+}
+
+.modal-body {
+  padding-top: 30px;
+  padding-right: 0px;
+  padding-left: 0px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  border-radius: 5px;
+  // box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal-text {
+  margin: 20px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.22;
+  letter-spacing: normal;
+  text-align: left;
+  color: #393e46;
+}
+
+/* The Close Button */
+.close {
+  color: #535252;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #aaaaaa;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .modal-image {
+    top: 10px;
+    margin: auto;
+    display: block;
+  }
+
+  .modal-shadow {
+    padding-top: 15px;
+    /* Location of the box */
+  }
+
+  .modal-body {
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .modal-content {
+    width: 90%;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 801px) {
+  .modal-image {
+    margin: 20px 0px 20px 20px;
+  }
+
+  .modal-text {
+    position: relative;
+    top: -400px;
+    left: 340px;
+    width: 380px;
+  }
+
+  .modal-body {
+    overflow: hidden;
+    scroll-behavior: smooth;
+    position: relative;
+  }
+
+  .modal-content {
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 425px) {
+  .selectedSlide {
+    height: 260px;
+  }
+
+  .modal-image {
+    width: 85%;
+  }
+
+  .prev,
+  .next {
+    height: 260px;
+    top: 0;
+  }
+
+  .modal-header {
+    padding-bottom: 5px;
+    padding-top: 20px;
+  }
+
+  .modal-body {
+    padding-top: 0px;
+  }
+
+  .gallery {
+    margin-top: 5px;
+    height: 70px;
+  }
+}

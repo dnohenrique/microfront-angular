@@ -1,0 +1,34 @@
+@import '../../../shared/assets/colors';
+.images-hotel {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  float: left;
+  height: 448px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.title-modal {
+  font-family: Roboto;
+  font-size: 25px;
+  font-weight: bold;
+  color: $mergulho;
+}
+
+// .modal-body {
+//   padding: 30px!important;
+//   padding-top: 0px!important;
+//   border-radius: 0!important;
+// }
+
+// .carousel-indicators {
+//   top: 445px;
+// }
+
+// .fc-modal .modal-body, .fc-modal .modal-content {
+//   padding: 20px!important;
+//   border-radius: 0!important;
+// }

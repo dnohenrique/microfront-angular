@@ -1,0 +1,214 @@
+<div class="title-page" *ngIf="!isPageList && !simulator">
+  <span *ngIf="!simulator">Para onde quer ir?</span>
+</div>
+<div class="btn-back" *ngIf="cityFocus || viewRoom || viewCalendar">
+  <i class="icon-fechar"></i>
+</div>
+<!-- <div class="title-page-simulator" *ngIf="simulator && (!isPageList || isHome)" [ngClass]="{  'home': isHome}">
+  Faça uma simulação em tempo real e confira o melhor plano para você!
+</div> 
+-->
+<section class="section-filter"
+  [ngClass]="{'page-list': isPageList, 'simulator-home': simulator && isHome, 'simulator-search':  onlyCity && !isHome}">
+
+  <div class="form-field plans" *ngIf="(!isPageList || isHome) && simulator">
+    <div class="label-text">Pesquise por categoria de conta:</div>
+    <label class="fc-input-radio" *ngFor="let plan of filterPlans; let i = index;">
+      <input type="radio" name="rdplan" (change)="selectedPlan(plan)"
+        [checked]="plan.id == entity.availabilityFilter.planId">
+      <span class="fc-checkradio"></span>
+      {{plan.name}}
+    </label>
+  </div>
+
+  <div id="filterSearch" class="filter-search" [ngClass]="{'focus': cityFocus || viewRoom || viewCalendar}">
+
+    <div [ngClass]="{'focus-destination': cityFocus}">
+      <!-- Autocomplete Destination -->
+      <div class="label-text" *ngIf="(!isPageList || isHome) && simulator">Cidade</div>
+      <div id="destantion" class="input-group row-input" [ngClass]="{'input-error': messaError.destination}">
+        <div class="input-group-prepend ico-map">
+          <div class="input-group-text">
+            <i class="icon-map" [ngClass]="{'city-focus': cityFocus}"></i>
+          </div>
+        </div>
+        <ngx-select id="autocompleteCity" class="auto-complete txt-search" [items]="citys" optionValueField="id"
+          optionTextField="name" optGroupLabelField="name" optGroupOptionsField="children" [disabled]="loading"
+          noResultsFound="Nenhum registro encontrado" [(ngModel)]="entity.availabilityFilter.destinationValue"
+          (click)="focusAutoCompleteCity()" (selectionChanges)="selectedCity($event)" (typed)="loadAutoComplete($event)"
+          (blur)="blurAutoCompleteCity()" allowClear="true" placeholder="Destino (Cidade, nome da hospedagem ou Aeroporto)"
+          data-hj-whitelist>
+        </ngx-select>
+        <div class="error-message" *ngIf="messaError.destination">
+          Informe o Destino
+        </div>
+
+        <img *ngIf="loadingAutoComplete" class="loading-complete"
+          src="https://static.ferias.co/images/gif/loading_cinza.gif" alt="" />
+      </div>
+    </div>
+    <section *ngIf="!onlyCity">
+      <!-- Quartos(Adulto e Crianças) -->
+      <div id="room" [ngClass]="{'view-rooms': viewRoom}" (clickOutside)="clickOut($event)">
+        <div id="divViewRoom" class="input-group row-input">
+          <div class="input-group-prepend room-input cursor-pointer" (click)="viewRooms()">
+            <div class="fc-input-group-text text-rooms room-input" [ngClass]="{'rooms-focus': viewRoom}">
+              <div class="rooms">
+                <i class="icon-rooms"></i>
+                <span class="font-default">{{entity.availabilityFilter.qtdRooms}} quarto<span
+                    *ngIf="entity.availabilityFilter.qtdRooms > 1">s</span></span>
+              </div>
+              <div class="pax">
+                <i class="icon-hospede"></i>
+                <span class="font-default">{{entity.availabilityFilter.qtdHospede}}
+                  pessoa<span *ngIf="entity.availabilityFilter.qtdHospede > 1">s</span></span>
+              </div>
+            </div>
+          </div>
+          <div id="balloonRoom" class="balloon" [ngClass]="{'balloon-open': viewRoom}">
+            <ul class="list" *ngFor="let room of entity.availabilityFilter.rooms; let last = last ">
+              <!-- Header Quarto -->
+              <li role="menuitem">
+                <div class="form-row">
+                  <div class="title-room">Quarto {{room.id}}</div>
+                  <!-- Remover Quarto -->
+                  <div id="btnEliminar" class="btn-eliminar" (click)="removeRoom(room)"
+                    *ngIf="last && entity.availabilityFilter.rooms.length > 1">
+                    <!-- <i class="icon-lixeira"></i> -->
+                    <button type="button" class="fc-btn fc-btn-danger">
+                      <span class="del">Deletar</span>
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <!-- Quantidade Adultos -->
+              <li role="menuitem">
+                <div class="form-row">
+                  <div class="legenda-room">
+                    <div class="title">Adultos</div>
+                    <div class="sub-title">A partir de 18 anos</div>
+                  </div>
+                  <div class="number qtd">
+                    <ng-number-picker inputReadOnly="true" size="small" [(value)]="room.quantityAdults" min="1"
+                      [max]="room.maxHospedeAdult" (valueChange)="changeAdult(room)" data-hj-whitelist>
+                    </ng-number-picker>
+                  </div>
+                </div>
+              </li>
+              <!-- Quantidade de Crianças -->
+              <li role="menuitem">
+                <div class="form-row">
+                  <div class="legenda-room">
+                    <div class="title">Crianças</div>
+                    <div class="sub-title">Até 17 anos</div>
+                  </div>
+                  <div class="number qtd">
+                    <ng-number-picker customClass="number" [(value)]="room.quantityChild" size="small"
+                      inputReadOnly="true" (valueChange)="changeChild(room)" min="0" [max]="room.maxHospedeChild"
+                      data-hj-whitelist>
+                    </ng-number-picker>
+                  </div>
+                </div>
+              </li>
+              <!-- Idade do Menor -->
+              <li role="menuitem" *ngFor="let childAge of room.childAgesCustom;let i = index;">
+                <div class="form-row">
+                  <div class="legenda-room title-child"> Idade da criança {{(i + 1)}}</div>
+                  <div class="number">
+                    <ngx-select id="select{{i}}" class="child" autoActiveOnMouseEnter="true" [items]="ages"
+                      optionValueField="id" optionTextField="name" [(ngModel)]="childAge.age"
+                      [ngModelOptions]="{standalone: true}" [noAutoComplete]="true" placeholder="Informe Idade"
+                      data-hj-whitelist>
+                    </ngx-select>
+                  </div>
+                </div>
+              </li>
+              <li class="divider dropdown-divider"></li>
+              <!-- Botão Adicionar mais quartos -->
+              <li role="menuitem" *ngIf="last">
+                <div class="form-row">
+                  <div class="btn-add">
+                    <div class="btn-room" (click)="addRoom()"
+                      [ngClass]="{'disabled': entity.availabilityFilter.rooms.length == 2}">
+                      <div id="addQuarto-text" class="text-btn">Mais um quarto</div>
+                    </div>
+                  </div>
+
+                  <div class="btn-apply">
+                    <div class="btn-room float-right">
+                      <button type="button" id="ApplyRoom" (click)="applyRoom()" class="fc-btn fc-btn-success">
+                        <span>Aplicar</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Datepicker Checkin/Checkout -->
+      <div id="datepicker" [ngClass]="{'balloon-calendar-focus': viewCalendar}"
+        (clickOutside)="clickOutCalendar($event)">
+        <div id="calendar-input" class="calendar-style">
+          <div class="ckeckin input-group row-input"
+            [ngClass]="{'full': isPageList, 'input-error': messaError.checkin}">
+            <div class="input-group-prepend">
+              <div class="input-group-text" [ngClass]="{'calendar-focus': viewCalendar && !focusCheckout}">
+                <i class="icon-calendar"></i>
+              </div>
+            </div>
+            <input type="text" class="form-control" (focus)="showCalendar()" mask='00/00/0000' [disabled]="loading"
+              (keyup)="changedCheckin()" [(ngModel)]="entity.availabilityFilter.checkin" autocomplete="off"
+              data-hj-whitelist [ngClass]="{'form-control-focus': viewCalendar && !focusCheckout}"
+              [ngModelOptions]="{standalone: true}" id="checkin" placeholder="Entrada" [readonly]="readonlyCalendar" />
+            <div class="error-message" *ngIf="messaError.checkin">
+              Informe a Entrada
+            </div>
+          </div>
+          <div class="ckeckout input-group row-input"
+            [ngClass]="{'full': isPageList, 'input-error': messaError.checkout}">
+            <div class="input-group-prepend">
+              <div class="input-group-text" [ngClass]="{'calendar-focus': viewCalendar && focusCheckout}">
+                <i class=" icon-calendar"></i>
+              </div>
+            </div>
+            <input type="text" class="form-control" [ngClass]="{'form-control-focus': viewCalendar && focusCheckout}"
+              (focus)="showCalendar(true)" mask='00/00/0000' (keyup)="changedCheckout()" autocomplete="off"
+              [disabled]="loading" data-hj-whitelist [(ngModel)]="entity.availabilityFilter.checkout"
+              [ngModelOptions]="{standalone: true}" id="checkout" placeholder="Saída" [readonly]="readonlyCalendar" />
+            <div class="error-message" *ngIf="messaError.checkout">
+              Informe a Saída
+            </div>
+          </div>
+
+          <div class="balloon-calendar"
+            [ngClass]="{'balloon-calendar-open': viewCalendar, 'checkout': focusCheckout && !isPageList, 'checkout-list':  focusCheckout && isPageList}"
+            *ngIf="viewCalendar">
+            <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="displayMonths" [dayTemplate]="t"
+              [minDate]="minDate" [startDate]="startDate" outsideDays="collapsed" [maxDate]="maxDate">
+            </ngb-datepicker>
+            <ng-template #t let-date let-focused="focused">
+              <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+                [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+                (mouseleave)="hoveredDate = null">
+                {{ date.day }}
+              </span>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Botão Pesquisar -->
+  <div class="btn-search">
+    <button type="button" (click)="search()" id="btnSearch" class="fc-btn fc-btn-success" [disabled]="loading">
+      <span *ngIf="isPageList">Nova pesquisa</span>
+      <span *ngIf="!isPageList">Pesquisar</span>
+    </button>
+  </div>
+  <div class="header-lupa-filter" (click)="search()">
+    <i class="icon-lupa"></i>
+  </div>
+</section>

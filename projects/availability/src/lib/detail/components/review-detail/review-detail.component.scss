@@ -1,0 +1,266 @@
+@import '../../../shared/assets/colors.scss';
+
+.rating-detail {
+  width: 100%;
+  float: left;
+  padding-top: 30px;
+
+  .info-rating {
+    width: 100%;
+    float: left;
+    color: $color_off;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .middle {
+    border-left: 1px dashed $pedra_clara;
+    border-right: 1px dashed $pedra_clara;
+    padding: 0 40px;
+    min-height: 160px;
+  }
+
+  .last {
+    padding-left: 40px;
+  }
+
+  .first {
+    text-align: center;
+
+  }
+
+  .col-rating {
+    width: 100%;
+    float: left;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .col-text {
+      width: 100%;
+      float: left;
+      text-align: center;
+      padding-left: 20px;
+      width: 100%;
+
+      .title {
+        font-weight: bold;
+        width: 100%;
+        float: left;
+        font-size: 16px;
+        color: $pedra_do_mar;
+        padding-bottom: 2px;
+      }
+
+      .description {
+        width: 100%;
+        float: left;
+        font-size: 18px;
+        font-weight: bold;
+        padding-bottom: 2px;
+      }
+
+      .count-user {
+        width: 100%;
+        font-family: Roboto;
+        font-size: 14px;
+        color: $color_off;
+        float: left;
+        font-weight: normal;
+      }
+    }
+
+    .number {
+      width: 100%;
+      float: left;
+      font-size: 70px;
+      font-weight: bold;
+      color: $pedra_do_mar;
+    }
+
+    .item-row {
+      width: 100%;
+      float: right;
+    }
+
+    .text-row {
+      width: 80%;
+      float: left;
+    }
+
+    .number-row {
+      width: 25px;
+      float: left;
+      font-weight: bold;
+    }
+  }
+
+  .comment-detail {
+    float: left;
+    width: 100%;
+
+    .title {
+      float: left;
+      width: 100%;
+      font-size: 18px;
+      font-weight: bold;
+      color: $pedra_do_mar;
+      padding-top: 50px;
+      padding-bottom: 30px;
+    }
+
+    .comment-row {
+      float: left;
+      width: 100%;
+      border-bottom: 1px dashed $pedra_clara;
+      padding-bottom: 40px;
+      padding-top: 30px;
+
+      .img-author {
+        float: left;
+        width: 40px;
+        height: 40px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 35px;
+      }
+
+      .img-author-none{
+        background: none;
+        background-color: #f9b508;
+        text-align: center;
+        padding-top: 6px;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Roboto;
+      }
+
+      .data-author {
+        float: left;
+
+        .name-author {
+          float: left;
+          padding-left: 15px;
+          width: 100%;
+          font-size: 16px;
+          font-weight: bold;
+          color: $pedra_do_mar;
+        }
+
+        .date-author {
+          float: left;
+          padding-left: 15px;
+          color: $color_off;
+          width: 100%;
+        }
+      }
+
+      .rating-author {
+        float: right;
+        width: 60px;
+        font-size: 14px;
+        font-size: 25px;
+        font-weight: bold;
+      }
+
+      .description-author {
+        float: left;
+        width: 100%;
+        padding-top: 25px;
+        padding-left: 60px;
+      }
+
+      .plus-read {
+        color: $mergulho;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.accordion {
+  margin-top: 10px;
+}
+
+fc-availability-pagination {
+  margin-top: 35px;
+  float: left;
+  width: 100%;
+}
+
+
+/* Mobile */
+@media only screen and (max-width: 872px) {
+  .rating-detail {
+    .col-rating {
+      width: 50%;
+
+      .text-row {
+        width: 70%;
+        font-size: 14px;
+      }
+
+      .number-row {
+        font-size: 14px;
+      }
+
+      .number{
+        padding-left: 0;
+        font-size: 40px;
+      }
+
+      .col-text{
+        width: 100%;
+        text-align: center;
+        height: auto;
+        .title{
+          font-size: 14px;
+        }
+        .description{
+          font-size: 16px;
+        }
+      }
+    }
+
+    .col-rating.first {
+      width: 100%;
+      padding-bottom: 35px;
+    }
+
+    .col-rating.middle {
+      border-left: none;
+      padding-left: 0;
+      padding-right: 20px;
+      min-height: 135px;
+    }
+
+    .comment-detail {
+      .comment-row {
+        .data-author {
+          width: 50%;
+
+          .name-author {
+            width: 80%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+
+        .rating-author {
+          width: auto;
+          font-size: 20px;
+        }
+      }
+    }
+
+    fc-availability-pagination {
+      margin-top: 0;
+    }
+  }
+}

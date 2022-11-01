@@ -1,0 +1,750 @@
+@import '../../../shared/assets/common.scss';
+@import '../../../shared/assets/ghost.scss';
+
+.content {
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  width: 100%;
+  color: $pedra_do_mar;
+  list-style: none;
+}
+
+.list {
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+
+.item {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 270px;
+  border-radius: 5px;
+  border: solid 2px $pedra_clara;
+  background-color: white;
+  margin-bottom: 30.4px;
+}
+
+.item:hover {
+  box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+}
+
+.item-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 30%;
+  float: left;
+  height: 266px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.item-info {
+  float: left;
+  width: calc(70% - 242px);
+  margin: 30px;
+  min-height: 194px;
+  margin-right: 0;
+  padding-right: 30px;
+
+}
+
+.content-recommended {
+  position: relative;
+}
+
+.recommended {
+  position: absolute;
+  right: -8px;
+  top: 35px;
+  background-image: url('https://static.ferias.co/images/hotel_recomendado.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 37px;
+  height: 37px;
+  cursor: pointer;
+}
+
+.item-money {
+  float: right;
+  width: 212px;
+  bottom: 0;
+  min-height: 208px;
+  border-left: solid 1px $pedra_clara;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/*IE10+ */
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+  .daily-points-extra {
+    padding-top: 90px;
+  }
+
+  .points-extra {
+    padding-top: 100px;
+  }
+
+  .points-back {
+    padding-top: 50px;
+  }
+}
+
+.money {
+  float: left;
+  width: 100%;
+  padding-right: 30px;
+}
+
+.extra-de {
+  float: left;
+  width: 100%;
+  font-size: 18px;
+  line-height: 1.21;
+  letter-spacing: normal;
+  color: $passeio_noturno;
+  text-align: right;
+}
+
+.extra-bold {
+  font-size: 18px;
+  color: $passeio_noturno;
+  font-weight: bold;
+  text-align: right;
+  padding-bottom: 20px;
+}
+
+.noites{
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.39;
+  letter-spacing: normal;
+  text-align: left;
+  color: $pedra_do_mar;
+  float: left;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.day {
+  float: left;
+  width: 100%;
+  font-size: 18px;
+  line-height: 1.23;
+  font-family: Roboto;
+  font-weight: bold;
+  letter-spacing: normal;
+  color: $mergulho;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  span {
+    font-weight: normal;
+  }
+}
+
+.day.extra-color {
+  color: $passeio_noturno;
+}
+
+.dots {
+  float: left;
+  width: 100%;
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.46;
+  letter-spacing: normal;
+  color: #535252;
+  margin-top: 5px;
+
+  span {
+    font-size: 16px;
+  }
+}
+
+.dots-body {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  i {
+    font-size: 30px;
+    color: #535252;
+    margin-right: 5px;
+    height: 32px;
+  }
+}
+
+.fc-btn-light {
+  width: 152px;
+  height: 30px;
+  font-size: 14px;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.fc-btn-light.extra {
+  border-color: $passeio_noturno;
+  color: $passeio_noturno;
+}
+
+.btn-detail-mobile.extra i {
+  color: $passeio_noturno;
+}
+
+.fc-btn-light:hover,
+.fc-btnicon.fc-btn-light:hover {
+  background-color: $mergulho;
+  color: white;
+}
+
+.fc-btn-light.extra:hover {
+  background-color: $passeio_noturno;
+  color: white;
+}
+
+.fc-btn-success {
+  width: 129px;
+  height: 40px;
+  margin-top: 15px;
+}
+
+.detail {
+  float: left;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-hotel {
+  font-family: Roboto;
+  font-size: 25px;
+  font-weight: bold;
+  float: left;
+  width: 100%;
+  padding-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.address {
+  font-size: 17px;
+  line-height: 1.18;
+  float: left;
+  padding-bottom: 10px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.category {
+  float: left;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.cancel {
+  font-size: 16px;
+  line-height: 1.19;
+  text-align: left;
+  color: $color_light;
+  float: left;
+  width: 100%;
+  border-top: 1px dashed $pedra_clara;
+  padding-top: 15px;
+}
+
+.icon-check {
+  color: $color_light;
+  font-size: 11px;
+  padding-left: 3px;
+  padding-top: 6px;
+  font-weight: normal;
+}
+
+.cancel span,
+.last-room span {
+  padding-left: 7px;
+  padding-top: 1px;
+}
+
+.rating {
+  width: 100%;
+  float: left;
+  padding-bottom: 15px;
+
+
+  img {
+    float: left;
+    padding-left: 3px;
+    padding-top: 6px;
+  }
+
+  .description {
+    font-size: 16px;
+    padding-left: 8px;
+    font-weight: bold;
+    color: $color_light;
+    float: left;
+  }
+
+  .count-user {
+    font-family: Roboto;
+    font-size: 14px;
+    color: $color_off;
+    float: left;
+    padding-left: 6px;
+    position: relative;
+    top: 2px;
+  }
+}
+
+.last-room {
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 1.19;
+  color: $passeio_noturno;
+  float: left;
+  width: 100%;
+}
+
+.last-room i {
+  font-size: 16px;
+  color: $passeio_noturno;
+
+  padding: 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.card-hotel {
+  margin-bottom: 5px;
+  border-bottom: 1px solid $pedra_clara;
+  float: left;
+  width: 100%;
+}
+
+.card-body-hotel {
+  float: left;
+  width: 69%;
+  padding: 14px;
+}
+
+.card-image {
+  float: left;
+  width: 28%;
+  padding: 10px;
+  text-align: center;
+}
+
+.card-image i {
+  font-size: 93px;
+  color: $color_ceu;
+}
+
+.card-image img {
+  margin: 7px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.card-image .camera {
+  border-radius: 5px;
+  border: 1px solid $pedra_clara;
+  padding-top: 43px;
+  height: 198px;
+}
+
+.card-image>div {
+  color: $pedra_clara;
+}
+
+.card-title-hotel {
+  margin-bottom: .75rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  color: $color_primary;
+  width: 80%;
+  float: left;
+  font-size: 18px;
+  padding-top: 5px;
+}
+
+.card-text-hotel {
+  width: 80%;
+  float: left;
+}
+
+.card-valor-hotel {
+  float: right;
+  width: 20%;
+  margin-top: -68px;
+}
+
+.card-stars {
+  width: 80%;
+  float: left;
+}
+
+.card-diaria {
+  height: 100%;
+  padding: 5px
+}
+
+.card-diaria span {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.top-scroll {
+  width: 18%;
+  background-color: $color_primary;
+  color: white;
+  text-align: center;
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  top: 76px;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.off {
+  .img-off {
+    background-color: #dcdcdc;
+    opacity: 0.5;
+    position: absolute;
+  }
+
+  .item-img,
+  .rating img {
+    opacity: 0.5;
+  }
+
+  .fc-btn.fc-btn-light {
+    border-color: $pedra_do_mar;
+    color: $pedra_do_mar;
+  }
+
+  .fc-btn.fc-btn-light:hover {
+    background-color: $pedra_do_mar;
+    color: white;
+  }
+
+  .day.off {
+    color: $pedra_do_mar;
+    font-size: 14px;
+  }
+
+  .title-hotel,
+  .address,
+  .icon-estrela.on,
+  .rating span {
+    color: $color_off;
+  }
+
+  .color-off {
+    color: $color_off;
+  }
+}
+
+.plus {
+  margin-right: 3.5px;
+}
+
+.modal-header {
+  border-bottom: none;
+  padding: 5px;
+}
+
+.main-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Roboto;
+  font-size: 22px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: normal;
+  text-align: center;
+  color: $mergulho;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+
+.e-ferias {
+  color: $horizonte;
+  font-size: 120px;
+}
+
+.loading-information {
+
+  .title-hotel,
+  .address,
+  .category,
+  .cancel,
+  .day,
+  .noites,
+  .dots-body,
+  .extra-de,
+  .extra-bold,
+  .day.off,
+  .fc-btn.fc-btn-light,
+  .fc-btn {
+    background-color: #f5f5f5;
+    border-bottom: 3px solid white;
+    border-radius: 4px 4px 4px 4px;
+    @include background-gradient;
+    @include animate-ghost-line;
+    height: 30px;
+    margin-bottom: 20px;
+    border: none;
+    color: rgba(0, 0, 0, 0);
+    cursor: initial;
+  }
+
+  .item {
+    border: none;
+    background-color: $color_fundo;
+  }
+
+  .item:hover {
+    box-shadow: none;
+    cursor: initial;
+  }
+
+  .fc-btn {
+    margin-bottom: 0;
+  }
+
+  .item-money {
+    padding-top: 116px;
+  }
+
+  .icon-check,
+  .content-recommended,
+  .icon-estrela,
+  .icon-seta-right,
+  fc-availability-pagination,
+  .rating,
+  .point-icon {
+    display: none;
+  }
+
+  .day,
+  .dots-body,
+  .extra-de,
+  .extra-bold {
+    width: 152px;
+    margin-left: 0px;
+    height: 48px;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+
+  .item-img {
+    background-color: #f5f5f5;
+    @include background-gradient;
+    @include animate-ghost-line;
+
+  }
+
+  @media screen and (max-width: 786px) {
+    .item-money {
+      padding-top: 0;
+    }
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 786px) {
+  .list .item {
+    border: solid 1px #dcdcdc;
+  }
+
+  .extra-de,
+  .extra-bold {
+    padding-left: 20px;
+  }
+
+  .page-title {
+    margin: 0;
+    min-width: 320px;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    margin-bottom: 100px;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  .item-img {
+    width: 100%;
+    height: 149px;
+    border-bottom-left-radius: 0px;
+  }
+
+  .item-info {
+    width: 100%;
+    padding: 20px;
+    margin: 0;
+    border-right: none;
+  }
+
+  .title-hotel {
+    font-size: 20px;
+    width: 92%;
+  }
+
+  .address {
+    font-size: 14px;
+    min-height: auto;
+  }
+
+  .cancel {
+    font-size: 14px;
+  }
+
+  .rating {
+    padding-bottom: 20px;
+
+    span {
+      font-size: 14px;
+    }
+  }
+
+  .icon-estrela {
+    font-size: 14px;
+  }
+
+  .item-money {
+    float: left;
+    width: 100%;
+    padding-top: 0;
+    margin-top: 0;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-left: none;
+    min-height: auto;
+    height: auto;
+    flex-direction: row;
+    display: block;
+  }
+
+  .money {
+    width: 80%;
+    float: left;
+  }
+
+  .bottom-border {
+    border-bottom: solid 1px $pedra_clara;
+    padding-bottom: 20px;
+  }
+
+  .detail {
+    float: right;
+    width: 10px;
+  }
+
+  .detail-money {
+    position: relative;
+    float: left;
+    width: 100%;
+    padding: 20px 20px 0 20px;
+
+  }
+
+  .icon-check {
+    font-size: 11px;
+  }
+
+  .day {
+    font-size: 19px;
+    justify-content: space-between;
+    margin-bottom: 0px;
+    align-items: flex-start;
+    /*     padding-left: 20px; */
+  }
+
+  .btn-detail-mobile {
+    display: block;
+    position: relative;
+    top: 25px;
+    right: 20px;
+  }
+
+  .icon-seta-right {
+    color: $mergulho;
+    font-size: 14px;
+    float: right;
+  }
+
+  #btnDetail {
+    display: none;
+  }
+
+  .dots {
+    font-weight: bold;
+    color: $mergulho;
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  .mobile-hide {
+    display: none;
+  }
+
+  .mobile-left {
+    float: left;
+  }
+
+  .dots-body {
+    i {
+      color: $mergulho;
+    }
+
+    margin-bottom: 15px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .btn-pagination-seta {
+    width: 25px;
+  }
+}

@@ -1,0 +1,32 @@
+<div class="content_max">
+    <div class="card-img-hotel ">
+        <div class="card-img-gradient"
+            [ngClass]="{'focus': isDestinationFocus || isRoomsFocus || isCheckinFocus || isCheckoutFocus}">
+
+            <div class="content_width">
+                <div class="content_component">
+
+                    <!-- HEADER MOBILE -->
+                    <div class="header-mobile welcome">
+                        <div class="text-mobile">
+                            <div class="text-welcome"><b>Olá João!</b></div>
+                            <div class="text-day">Você possui 6 diárias disponíveis</div>
+                        </div>
+                        <div class="imgE"><i class="icon-e_ferias"></i></div>
+                    </div>
+
+
+                    <!-- Biblioteca Availability -->
+                    <div class="filter">
+                        <fc-availability-filter-search (changeDestinationFocus)="changeDestinationFocus($event)"
+                            (changeRoomsFocus)="changeRoomsFocus($event)" [isTitle]="false"
+                            (changeCheckinFocus)="changeCheckinFocus($event)"
+                            (changeCheckoutFocus)="changeCheckoutFocus($event)"></fc-availability-filter-search>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

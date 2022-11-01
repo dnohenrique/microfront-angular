@@ -1,0 +1,113 @@
+<div id="list" class="list" [ngClass]="{'loading-information': loading}">
+
+  <div class="item" *ngFor="let h of viewHotels">
+    <section (click)="goToDetail(h)" [ngClass]="{'off': h.off && !simulator}">
+      <div *ngIf="!loading" class="item-img"
+        [ngStyle]="{'background-image': 'url(' + (h.imageUrl !== ''  ? h.imageUrl : common.hotelNotImage)  + ')' }">
+      </div>
+      <div *ngIf="loading" class="item-img">
+      </div>
+      <div class="item-info">
+        <div class="title-hotel" title="{{h.name}}">
+          {{h.name}}
+        </div>
+        <div class="address">
+          {{h.street}} - {{h.cityName || entity.destinationText}}
+        </div>
+
+        <div class="category"
+          [ngClass]="{'bottom-border': (h.isNonRefundable || (h.off && !simulator) || h.categorys?.length == 0) &&  !h.review?.notaMedia }">
+          <i class="icon-estrela on" *ngFor="let item of h.categorys"></i>
+        </div>
+        <div class="rating " *ngIf="h.review?.notaMedia > 0"
+          [ngClass]="{'bottom-border': h.isNonRefundable || (h.off && !simulator)}">
+          <img src="https://static.ferias.co/images/like-green.jpg" alt="">
+          <span class="description">{{h.review.notaMediaExibicao}}</span>
+          <span *ngIf="h.review.notaDescricao" class="description"> - {{h.review.notaDescricao}}</span>
+
+          <span class="count-user">({{h.review.totalAvaliacoes}} avaliações)</span>
+        </div>
+        <div class="cancel bottom-border" *ngIf="!h.isNonRefundable && !h.off">
+          <i class="icon-check"></i>
+          <span>Cancelamento grátis!</span>
+        </div>
+      </div>
+      <div id="btnDetailMobile" class="btn-detail-mobile" [ngClass]="{'extra': h.price.totalPriceExtra > 0}">
+        <i class="icon-seta-right"></i>
+      </div>
+      <div class="item-money" [ngClass]="{'daily-points-extra': h.price.accumulatedPoint == 0 && h.price.planDailyUsed > 0 && h.price.planPointUsed > 0 && h.price.totalPriceExtra > 0,
+        'points-back': h.price.accumulatedPoint > 0,
+        'points-extra': h.price.accumulatedPoint == 0 && (h.price.planPointUsed > 0 || h.price.totalPriceExtra > 0)}">
+        <div class="noites">{{entity.numberOfNights}} noite<span
+            *ngIf="entity.numberOfNights> 1">s</span> por </div>
+        <div [ngClass]="{'extra-color': h.price.totalPriceExtra > 0}" class="day">
+          <div *ngIf="!h.off">
+            <span *ngIf="h.price.planPointUsed == 0 && h.price.totalPriceExtra == 0">
+              <b>{{h.price.planDailyUsed}} Diária<b *ngIf="h.price.planDailyUsed > 1">s</b> do plano</b>
+            </span>
+            <span *ngIf="(h.price.planDailyUsed > 0 && (h.price.planPointUsed > 0 || h.price.totalPriceExtra > 0))">
+              {{h.price.planDailyUsed}} Diária<b *ngIf="h.price.planDailyUsed > 1">s</b>
+              <span *ngIf="h.price.planPointUsed > 0 || h.price.totalPriceExtra > 0"> +<br></span>
+            </span>
+            <span *ngIf="h.price.planPointUsed > 0"
+              [ngClass]="{'mobile-left': h.price.planPointUsed > 0 && h.price.totalPriceExtra > 0}">
+              <b>{{h.price.planPointUsedFormat}} ponto</b><span *ngIf="h.price.planPointUsed > 1"><b>s</b></span>
+              <span class="plus" *ngIf="h.price.totalPriceExtra > 0"> + <br></span>
+            </span>
+            <span *ngIf="h.price.totalPriceExtra > 0">
+              <b>{{ h.price.totalPriceExtra | currency: h.price.currency}}</b>
+            </span>
+          </div>
+          <div *ngIf="h.price.accumulatedPoint > 0" class="dots mobile-hide">
+            <div class="dots-body">
+              <i class="icon-point point-icon"></i>
+              <div>
+                Ganhe de volta<br>
+                <span><b>{{h.price.accumulatedPointFormat}} pontos</b></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="off" *ngIf="h.off && !simulator">
+            <span class="color-off"><b>Vagas esgotadas<br>
+                para este período</b></span>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" id="btnDetail" class="fc-btn fc-btn-light"
+            [ngClass]="{'extra': h.price.totalPriceExtra > 0}">
+            Ver detalhes
+          </button>
+        </div>
+
+      </div>
+    </section>
+    <div id="contentRecommended" class="content-recommended" (clickOutside)="clickOut($event, h)">
+      <div id="btnRecommend" class="recommended" *ngIf="h.recommended && (!h.off || simulator)"
+        (click)="h.viewRecommend = !h.viewRecommend">
+
+      </div>
+      <div class="fc-arrow-box" *ngIf="h.viewRecommend ">
+        <div class="fc-content-arrow"> Hotel recomendado!</div>
+      </div>
+    </div>
+  </div>
+  <!--PAGINAÇÃO-->
+  <fc-availability-pagination (paginationEvent)="getHotels($event)" [datas]="hotels" [cssScrollTop]="'.list-content'"
+    [loading]="loading" [registersPerPage]="10" [id]="'hotel'">
+  </fc-availability-pagination>
+</div>
+
+<!-- Modal Loading - First Step -->
+<!--   <ng-template #loadingFirstStep>
+    <div class="modal-header">
+    </div>
+    <div class="modal-body">
+      <div class="main-info">
+        <i class="icon-e_ferias e-ferias"></i>
+        <div><b>Buscando as melhores</b></div>
+        <div><b>hospedagens em {{entity.destinationText}}!</b></div>
+      </div>
+    </div>
+  </ng-template> -->

@@ -1,0 +1,287 @@
+<div class="list-content">
+  <!-- Cabeçalho Mobile -->
+  <div class="header-mobile-list" (click)="viewSearch = true">
+    <div class="header-info">
+      <div class="destination">
+        <i class="icon-map"></i> <b class="text-header"> {{entity.availabilityFilter.destinationText}}</b>
+      </div>
+      <div class="rooms-header">
+        <i class="icon-rooms"></i> <span class="text-header">{{entity.availabilityFilter.qtdRooms}}</span>
+      </div>
+      <div class="hospede-header">
+        <i class="icon-hospede"></i> <span class="text-header">{{entity.availabilityFilter.qtdHospede}}</span>
+      </div>
+      <div class="calendar-header"><i class="icon-calendar"></i>
+        <span class="text-header">
+          {{entity.availabilityFilter.checkinDate | date: 'dd/LLL'}} à
+          {{entity.availabilityFilter.checkoutDate | date: 'dd/LLL'}}
+        </span>
+      </div>
+    </div>
+    <div class="header-lupa">
+      <i class="icon-lupa"></i>
+    </div>
+  </div>
+
+  <!-- Coluna de filtros -->
+  <div class="col-filter">
+    <div class="conteudo mala">
+      <div class="ico">
+        <i class="icon-luggage"></i>
+      </div>
+      <div class="title">
+        {{availableDays}} diária<span *ngIf="availableDays > 1">s</span>
+        <span *ngIf="availablePoints > 0"> + {{availablePointsFormat}} ponto<span
+            *ngIf="availablePoints > 1">s</span></span>
+      </div>
+      <div class="sub-title">{{namePlan}}</div>
+    </div>
+
+    <div class="filter-booking" *ngIf="!simulator">
+      <button type="button" class="fc-btn hotel fc-btn-success">
+        Hospedagens
+      </button>
+      <button type="button" class="fc-btn air fc-btn-light" (click)="changeProduct(2)">
+        Voos
+      </button>
+    </div>
+
+    <!-- Nova Pesquisa Pesquisa -->
+    <div class="conteudo filter" [ngClass]="{'view-search': viewSearch}">
+      <div class="header-title">
+        <div class="title-filter">Quer ir para onde?</div>
+        <div class="filter-close" (click)="viewSearch = false">
+          <i class="icon-fechar"></i>
+        </div>
+      </div>
+      <fc-availability-filter-search [isPageList]="true" [isTitle]="true" [simulator]="simulator"
+        (clickSearch)="resultSearch($event)" [loading]="submitSearch">
+      </fc-availability-filter-search>
+    </div>
+    <div class="filter-hotel" [ngClass]="{'full-filter': viewFilter, 'loading-information': loading}">
+      <div class="content-filter">
+        <!-- Exibir por Plano -->
+        <section *ngIf="entityResult.filterOptionPayments.length > 0 || loading">
+          <div class="title-filter">Exibir por plano</div>
+          <div class="filter-close" (click)="closeFilter()">
+            <i class="icon-fechar"></i>
+          </div>
+          <div class="filters">
+            <div class="item-filter">
+              <div class="check">
+                <label id="plano{{i}}" class="container-ckeck"
+                  *ngFor="let item of entityResult.filterOptionPayments; let i = index;">
+                  <input id="checkPlano{{i}}" type="checkbox" [(ngModel)]="item.selected"
+                    (change)="selectedPlan($event)" />
+                  <span class="text">{{item.name}}</span>
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Planos -->
+        <section class="section-plans" *ngIf="simulator && filterPlans.length > 0 && !loading">
+          <div class="title-filter title-plan">Planos</div>
+          <div class="item-filter">
+            <div class="check">
+              <label id="planosSimulador{{i}}" class="container-ckeck" *ngFor="let plan of filterPlans; let i = index;">
+                <input type="checkbox" [checked]="entity.availabilityFilter.planId == plan.id"
+                  (change)="changePlanDay(plan.id)" />
+                <span class="text">{{plan.name}}</span>
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Filtros -->
+        <div class="title-filter" *ngIf="(loading || isFilter || simulator) && !msgNotResult">Filtros</div>
+        <div class="filters">
+          <!-- Nome do Hotel -->
+          <div class="item-filter page-list" *ngIf="(entityResult.filterHotels.length > 0 && !loading)">
+            <div class="input-group mb-2">
+              <div class="label">Hotel específico</div>
+              <div class="input-group-prepend ico-hotel">
+                <div class="input-group-text">
+                  <i class="icon-hotel" [ngClass]="{'hotel-focus': hotelFocus}"></i>
+                </div>
+              </div>
+              <ngx-select id="nomeHotel" class="txt-search auto-complete" [items]="viewFilterHotels"
+                optionValueField="id" optionTextField="description" noResultsFound="Nenhum registro encontrado"
+                [(ngModel)]="selectedNameHotel" (focus)="hotelFocus = true" (blur)="hotelFocus = false"
+                (typed)="validMinValue($event)" (select)="filterHotels(2, $event)" (remove)="filterHotels(2)"
+                allowClear="true" placeholder="Nome do Hotel">
+              </ngx-select>
+
+            </div>
+          </div>
+          <!-- Categorias -->
+          <div class="item-filter" *ngIf="(entityResult.filterCategorys.length > 0 && !loading)">
+            <div class="label">Estrelas</div>
+            <div class="check category-check" *ngFor="let item of entityResult.filterCategorys; let i = index">
+              <label id="category{{i}}" class="container-ckeck">
+                <input type="checkbox" [(ngModel)]="item.selected" (change)="filterHotels(4)" />
+                <span class="text">
+                  <i class="icon-estrela on" *ngFor="let category of ToArray(item.description)"></i>
+                </span>
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <!-- Refeições -->
+          <div class="item-filter" *ngIf="(entityResult.filterBoardRegimes.length > 0 && !loading) ">
+            <div class="label">Refeições</div>
+            <div class="check">
+              <label id="refeicao{{i}}" class="container-ckeck"
+                *ngFor="let item of entityResult.filterBoardRegimes; let i = index;">
+                <input type="checkbox" [(ngModel)]="item.selected" (change)="filterHotels(5)" />
+                <span class="text">{{item.description}}</span>
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <!-- Serviços -->
+          <div class="item-filter" *ngIf="(entityResult.filterAmenities.length > 0 && !loading) ">
+            <div class="label">Serviços</div>
+            <div class="check ">
+              <label id="servicos{{i}}" class="container-ckeck"
+                *ngFor="let item of entityResult.filterAmenities; let i = index;">
+                <input type="checkbox" [(ngModel)]="item.selected" (change)="filterHotels(6)" />
+                <span class="text ">{{item.description}}</span>
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <button type="button" id="btnClearFilters" *ngIf="(loading || isFilter) && !msgNotResult"
+              class="fc-btn fc-btn-sm fc-btn-light btn-clear-filters" (click)="clearFilters()">
+              Limpar filtros
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="btn-filter" *ngIf="!loading">
+        <button type="button" (click)="filterMobile()" id="btnFilter" class="fc-btn fc-btn-success">
+          Filtrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coluna Lista -->
+  <div class="col-list">
+    <!-- Mensagem de resultados somente de Planos Superiores -->
+    <div class="msg-plan" *ngIf="isNotMyPlan && isFilter">
+      <div class="msg-plan-img"></div>
+      <div class="msg-plan-title">
+        Sem resultados dentro do seu plano :/
+      </div>
+      <div class="msg-pla-subtitle">
+        Não existem resultados para as datas selecionadas. Separamos abaixo hospedagens disponíveis pagando um valor
+        extra.
+      </div>
+    </div>
+
+    <!-- Mensagem de Erro -->
+    <div class="fc-alert fc-alert-warning" *ngIf="this.entityResult && this.entityResult.instability">
+      <i class="icon-alerta"></i>
+      <span><b>Estamos passando por um momento de instabilidade.</b> <span *ngIf="simulator">Tente novamente mais
+          tarde.</span><span *ngIf="!simulator">Caso não consiga reservar seu quarto volte mais
+          tarde.</span>
+      </span>
+    </div>
+
+    <!-- Cabeçalho da Lista Desktop -->
+    <div class="conteudo msg" *ngIf="countHotels > 0 && !loading">
+      <div class="msg-plan" *ngIf="simulator">
+        <div class="msg-plan-img"></div>
+        <div class="msg-plan-title">
+          Essas são as opções de hospedagens disponíveis neste momento com base no plano escolhido.
+        </div>
+        <div class="msg-pla-subtitle">
+          As referências podem sofrer alterações a qualquer momento de acordo com o destino, quantidade de pessoas,
+          disponibilidade e período desejado.
+        </div>
+      </div>
+      <!-- <fc-availability-info-message *ngIf="!simulator"></fc-availability-info-message> -->
+
+      <div class="header-msg">
+        <div class="text-header"><span class="qtd">{{countHotels}} <span *ngIf="countHotels == 1">hotel</span><span
+              *ngIf="countHotels > 1">hotéis</span></span> para
+          {{headerInfo.qtdRooms}} quarto<span *ngIf="headerInfo.qtdRooms > 1">s</span> com
+          {{headerInfo.qtdAdult}} adulto<span *ngIf="headerInfo.qtdAdult > 1">s</span>
+          <span *ngIf="headerInfo.qtdChild > 0"> e
+            {{headerInfo.qtdChild}} criança<span
+              *ngIf="headerInfo.qtdChild > 1">s</span></span> em
+          {{headerInfo.destinationText}}
+        </div>
+        <div class="period">De {{headerInfo.checkin | mask: '00/00/0000'}} a
+          {{headerInfo.checkout | mask: '00/00/0000'}}</div>
+      </div>
+      <div class="header-msg-mobile">
+        <span class="qtd">{{countHotels}} <span *ngIf="countHotels == 1">hotel</span><span
+            *ngIf="countHotels > 1">hotéis</span></span> encontrados em {{headerInfo.destinationText}}
+      </div>
+      <div class="order">
+        <div class="item-order">
+          <div class="label">Ordenado por: </div>
+          <ngx-select id="selectOrder" [ngModelOptions]="{standalone: true}" [items]="listOrder" optionValueField="id"
+            [(ngModel)]="orderId" optionTextField="name" (select)="orderHotel($event, false)" [noAutoComplete]="true">
+          </ngx-select>
+        </div>
+      </div>
+    </div>
+    <div class="loading-text-list" *ngIf="loading">
+      <span>Buscando pelas melhores hospedagens</span> <img src="https://static.ferias.co/images/lupa_animada.gif">
+    </div>
+    <div class="content-list">
+      <!-- Mensagem nenhum resultado encontrado -->
+      <fc-availability-alert-message *ngIf="msgNotResult" [textAlert]="'Sua busca não retornou resultados.'"
+        [subTextAlert]="'Experimente buscar por uma data diferente'">
+      </fc-availability-alert-message>
+      <!-- lista -->
+      <fc-availability-list-hotel [hotels]="listHotel" [token]="entityResult.token" (clickSearch)="resultSearch($event)"
+        [entity]="headerInfo" [loading]="loadingList" [simulator]="simulator"
+        (setReviewHotelsEvent)="setReviewHotels($event)">
+      </fc-availability-list-hotel>
+    </div>
+  </div>
+
+  <!-- Ordernar e filtrar - Mobile -->
+  <div class="order-filter"
+    *ngIf="!viewFilter && !viewOrder && !viewSearch && countHotels > 0 && viewFilterOrder && !loading">
+    <div class="div-order" (click)="viewMobileOrder()">
+      <i class="icon-ordem"></i>
+      Ordem
+    </div>
+    <div class="div-filter" (click)="viewMobileFilter()">
+      <i class="icon-filter"></i>
+      Filtros
+    </div>
+  </div>
+
+  <!-- Ordenar -->
+  <div class="order-mobile" *ngIf="viewOrder">
+    <div class="content-order">
+      <div class="title-filter">Ordenar</div>
+      <div class="filter-close" (click)="closeOrder()">
+        <i class="icon-fechar"></i>
+      </div>
+      <div class="item-order-mobile">
+        <div class="check">
+          <label id="rede{{i}}" class="container-ckeck" *ngFor="let item of common.listOrder; let i = index;">
+            <input type="checkbox" [(ngModel)]="item.selected" (change)="orderHotelMobile(item)" />
+            <span class="text">{{item.name}}</span>
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+      <div class="btn-filter">
+        <button type="button" (click)="orderHotel(0)" id="btnOrder" class="fc-btn fc-btn-success">
+          Ordenar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

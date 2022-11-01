@@ -1,0 +1,1301 @@
+@import "../shared/assets/colors";
+
+::ng-deep {
+  .ngx-select__disabled {
+    display: none;
+  }
+}
+
+.row-input {
+  margin-bottom: 20px;
+}
+
+.title-page {
+  padding-bottom: 10px;
+  float: left;
+  width: 100%;
+  font-weight: bold;
+  padding: 20px;
+  font-size: 26px;
+  text-align: center;
+  line-height: 1.46;
+  color: $pedra_do_mar;
+  background: white;
+}
+
+.title-page-simulator {
+  width: 100%;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  color: $mergulho;
+  padding-bottom: 20px;
+  float: left;
+}
+
+.label-text {
+  float: left;
+  width: 100%;
+  font-family: Roboto;
+  font-size: 16px;
+  color: $pedra_cinza;
+  padding-bottom: 8px;
+}
+
+.filter-search {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.simulator-home {
+  .filter-search {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .btn-search {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+
+    .fc-btn {
+      width: 100%;
+    }
+  }
+}
+
+.simulator-search {
+  .filter-search {
+    padding-left: 0;
+    padding-right: 0;
+    width: calc(100% - 190px);
+    max-width: 454.9px;
+    float: left;
+  }
+
+  .btn-search {
+    padding-right: 0;
+    float: left;
+    width: 190px;
+    padding-left: 20px;
+    padding-top: 32px;
+
+    .fc-btn {
+      height: 50px;
+    }
+  }
+
+  .fc-input-radio {
+    width: 117px !important;
+  }
+
+}
+
+.btn-back {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  background: white;
+  width: 100%;
+  height: 80px;
+  padding-left: 10px;
+}
+
+
+.home {
+  font-family: "Didact Gothic", sans-serif;
+  color: #4E306F;
+  font-weight: normal;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.home .label-text {
+  color: #535252;
+  font-weight: normal;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.home .destination {
+  width: 100%;
+}
+
+.home .btn-search {
+  width: 100%;
+  margin-top: 15px;
+  padding: 0;
+}
+
+.home .btn-search button {
+  width: 100%;
+  border-radius: 0;
+}
+
+/* #region - Autocomplete */
+.txt-search {
+  width: 100%;
+}
+
+.loading-complete {
+  position: absolute;
+  height: 24px;
+  top: 13px;
+  width: 25px !important;
+  right: 25px;
+}
+
+.page-list .loading-complete {
+  top: 9px;
+}
+
+.ico-map div {
+  position: absolute;
+  top: 2px;
+  z-index: 2;
+  border: none;
+  left: 0px;
+  padding-left: 10px;
+  padding-top: 5px;
+  height: 47px;
+}
+
+.page-list .ico-map div {
+  height: 37px;
+  padding-right: 0;
+  padding-left: 10px;
+}
+
+.page-list .icon-map {
+  font-size: 17px;
+}
+
+.dropdown-header {
+  background-color: white;
+  margin-bottom: 3px;
+  font-family: Roboto;
+  font-weight: bold;
+}
+
+.auto-complete .ngx-select__choices.dropdown-menu.show {
+  height: 300px;
+  overflow-y: auto;
+}
+
+.ngx-select__toggle.btn.form-control,
+input.form-control {
+  height: 50px;
+  border-radius: 5px;
+  background-color: $color_fundo_pedra;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  color: $pedra_cinza;
+  padding: 9px;
+}
+
+#filterSearch .input-error .ngx-select__toggle.btn.form-control {
+  outline: none;
+  border: 1px solid $ceu_de_pipa;
+  caret-color: $ceu_de_pipa;
+}
+
+#filterSearch .input-error .input-group-text .icon-map {
+  color: $ceu_de_pipa;
+}
+
+#filterSearch .error-message {
+  position: absolute;
+  top: 49px;
+  z-index: 2;
+}
+
+/* #endregion */
+
+/*#region - Date Picker*/
+.calendar-style {
+  position: relative;
+}
+
+.icon-calendar {
+  padding-top: 2px;
+  font-size: 20px;
+  padding-left: 2px;
+}
+
+.page-list .icon-calendar {
+  padding-left: 0;
+  font-size: 17px;
+  padding-right: 0;
+}
+
+.input-error .icon-calendar {
+  color: $ceu_de_pipa;
+}
+
+.calendar-style .input-group-text {
+  border: 1px solid $pedra_clara;
+  border-right: none;
+}
+
+.fc-input-group-text.rooms-focus,
+.calendar-style .input-group-text.calendar-focus {
+  border: 1px solid $mergulho;
+  color: $mergulho;
+  background-color: white;
+}
+
+.calendar-style .input-error input.form-control {
+  outline: none;
+  border: 1px solid $ceu_de_pipa;
+  border-left: none;
+  caret-color: $ceu_de_pipa;
+}
+
+.page-list .calendar-style .input-group-text {
+  padding-left: 8px;
+  padding-right: 3px;
+}
+
+.calendar-style .input-error .input-group-text {
+  border: 1px solid $ceu_de_pipa;
+  border-right: none;
+}
+
+.calendar-style .input-group-prepend {
+  border-right: none;
+  height: 50px;
+  padding-top: 0;
+}
+
+.calendar-style .form-control {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: normal;
+  color: $pedra_cinza;
+  padding-left: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 50px;
+  border: solid 1px $pedra_clara;
+  border-left: none;
+  background-color: $color_fundo_pedra;
+}
+
+.page-list .calendar-style .input-group-prepend,
+.page-list .calendar-style .form-control {
+  height: 40px;
+  font-size: 15px;
+}
+
+.calendar-style .form-control.form-control-focus {
+  background-color: white;
+  border-color: $mergulho;
+}
+
+.calendar-style .ckeckin {
+  float: left;
+  padding-right: 7.5px;
+  width: 50%;
+}
+
+.calendar-style .ckeckout {
+  float: left;
+  padding-left: 7.5px;
+  width: 50%;
+}
+
+.calendar-style .ckeckin.full,
+.calendar-style .ckeckout.full {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.date-column-input {
+  width: 50%;
+  float: left;
+}
+
+.date-column-input.checkout {
+  padding-left: 10px;
+}
+
+.custom-select {
+  background-color: $color_fundo_pedra;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  color: $pedra_cinza;
+}
+
+.custom-select option:hover {
+  background-color: $mergulho;
+  color: white;
+}
+
+.balloon-calendar {
+  margin: 0 auto;
+  line-height: 1.6em;
+  height: auto;
+  color: $color_fundo_calendar;
+  position: absolute;
+  top: 60px;
+  -moz-transition: opacity 0.25s ease-out, visibility 0.25s;
+  -o-transition: opacity 0.25s ease-out, visibility 0.25s;
+  -webkit-transition: opacity 0.25s ease-out, visibility 0.25s;
+  transition: opacity 0.25s ease-out, visibility 0.25s;
+  opacity: 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  z-index: 10;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px $pedra_clara;
+  background-color: white;
+}
+
+.page-list .balloon-calendar {
+  top: 54px;
+  left: -26px;
+}
+
+.page-list .balloon-calendar::before,
+.page-list .balloon-calendar::after {
+  left: 23px;
+}
+
+.balloon-calendar::before {
+  /*Triangulo*/
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid $pedra_clara;
+  top: -20px;
+  left: 1%;
+}
+
+.balloon-calendar::after {
+  /*Triangulo*/
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  top: -21px;
+  bottom: auto;
+  position: absolute;
+  left: 1%;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid $color_fundo_calendar;
+  border-style: solid;
+  border-color: $color_fundo_calendar transparent;
+}
+
+.balloon-calendar.checkout::before,
+.balloon-calendar.checkout::after {
+  right: 35%;
+  left: auto;
+}
+
+.page-list .balloon-calendar.checkout-list {
+  top: 112px;
+}
+
+.balloon-calendar-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.balloon-calendar ngb-datepicker {
+  border: none;
+}
+
+.calendar-focus {
+  background-color: white;
+}
+
+.calendar-focus i {
+  color: $mergulho;
+}
+
+/*#endregion*/
+
+/*#region - DropDown Quartos*/
+
+#addQuarto-text {
+  margin-top: 10px;
+  height: 17px;
+  font-family: Roboto;
+  font-size: 16px;
+  // font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+}
+
+.room-input {
+  float: left;
+  width: 100%;
+  height: 50px;
+}
+
+.page-list .room-input {
+  height: 40px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.rooms .font-default {
+  color: $pedra_cinza;
+  font-weight: normal;
+  font-size: 18px;
+  padding-top: 5px;
+  float: left;
+  padding-left: 10px;
+  padding-bottom: 0;
+  padding-right: 0;
+  font-family: Roboto;
+}
+
+.page-list .rooms .font-default {
+  font-size: 15px;
+  padding-top: 7px;
+  padding-left: 1px;
+}
+
+.pax .font-default {
+  color: $pedra_cinza;
+  font-weight: normal;
+  font-size: 18px;
+  float: left;
+  font-family: Roboto;
+  padding: 5px 0 0 9px;
+}
+
+.page-list .pax .font-default {
+  font-size: 15px;
+  padding: 6px 0 0 6px;
+}
+
+.rooms i {
+  padding-top: 3px;
+  font-size: 22px;
+}
+
+.page-list .rooms i {
+  padding-right: 3px;
+  padding-left: 8px;
+  font-size: 18px;
+  padding-top: 4px;
+}
+
+.pax i {
+  padding-top: 4px;
+  font-size: 22px;
+}
+
+.page-list .pax i {
+  font-size: 18px;
+}
+
+.input-group-text {
+  padding: 8px;
+}
+
+.legenda-room {
+  width: 54%;
+  float: left;
+}
+
+.number {
+  margin-bottom: 5px;
+  width: 45%;
+  float: left;
+}
+
+.qtd {
+  height: 30px;
+  margin-top: 15px;
+}
+
+.btn-group {
+  width: 100%;
+}
+
+.btn-add {
+  width: 70%;
+  float: left;
+}
+
+.btn-apply {
+  width: 30%;
+  float: left;
+}
+
+.btn-custom {
+  width: 100%;
+  background: white;
+  color: inherit;
+  text-align: left;
+  border: 1px solid $pedra_clara;
+  border-radius: 0.25rem;
+}
+
+.balloon {
+  margin: 0 auto;
+  background: white;
+  line-height: 1.6em;
+  height: auto;
+  color: $color_fundo_calendar;
+  padding: 20px;
+  position: absolute;
+  margin-top: 60px;
+  -moz-transition: opacity 0.25s ease-out, visibility 0.25s;
+  -o-transition: opacity 0.25s ease-out, visibility 0.25s;
+  -webkit-transition: opacity 0.25s ease-out, visibility 0.25s;
+  transition: opacity 0.25s ease-out, visibility 0.25s;
+  opacity: 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  z-index: 10;
+  width: 314px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px $pedra_clara;
+  background-color: white;
+  left: 0;
+  display: none;
+}
+
+.balloon::before {
+  /*Triangulo*/
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid $pedra_clara;
+  top: -20px;
+  left: 1%;
+}
+
+.balloon::after {
+  /*Triangulo*/
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  top: -21px;
+  bottom: auto;
+  position: absolute;
+  left: 1%;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid $pedra_clara;
+  border-style: solid;
+  border-color: white transparent;
+}
+
+.list {
+  background-color: white;
+}
+
+.balloon .list {
+  padding: 0;
+}
+
+.balloon .list li {
+  display: inherit;
+}
+
+.balloon-open {
+  opacity: 1;
+  display: block;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  text-align: left;
+  color: $pedra_cinza;
+}
+
+.sub-title {
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.17;
+  letter-spacing: normal;
+  text-align: left;
+  color: $pedra_cinza;
+  padding-top: 5px;
+}
+
+.title-child {
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: left;
+  color: $pedra_cinza;
+  padding-top: 10px;
+}
+
+.btn-room {
+  height: 17px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: left;
+  color: $mergulho;
+  cursor: pointer;
+  float: left;
+}
+
+.btn-room.disabled {
+  color: $color_disabled;
+  cursor: default;
+}
+
+.btn-room .ico {
+  font-size: 29px;
+  float: left;
+  font-weight: bold;
+}
+
+.btn-room .text-btn {
+  float: left;
+  // padding: 10px;
+}
+
+.form-row {
+  margin-left: 0px;
+}
+
+.divider.dropdown-divider {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.title-room {
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  text-align: left;
+  color: $mergulho;
+  margin-bottom: 20px;
+  float: left;
+  width: 70%;
+}
+
+.btn-eliminar {
+  text-align: right;
+  float: right;
+  width: 30%;
+  padding-right: 4px;
+  margin-top: -5px;
+}
+
+.fc-btn-danger {
+  min-width: 70px;
+  height: 30px;
+  margin-bottom: 16px;
+  font-size: 12px;
+}
+
+.btn-eliminar i {
+  float: right;
+  color: $ceu_de_pipa;
+  cursor: pointer;
+  padding-top: 0;
+}
+
+.fc-input-group-text {
+  background-color: $color_fundo_pedra;
+  padding-right: 8px;
+  border-radius: 5px;
+  border: solid 1px $pedra_clara;
+  padding: 5px;
+}
+
+.text-rooms {
+  display: grid;
+  grid-template-columns: 47% 52%;
+  grid-template-rows: 100%;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.page-list .text-rooms {
+  padding-top: 0;
+}
+
+.text-rooms .rooms {
+  float: left;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  text-align: left;
+  height: 38px;
+  padding-top: 5px;
+}
+
+.text-rooms .pax {
+  float: left;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  display: flex;
+  overflow: hidden;
+  border-left: 1px solid #dcdbdb;
+  padding-left: 12px;
+  height: 38px;
+  padding-top: 5px;
+}
+
+.page-list .text-rooms .pax {
+  padding-left: 5px;
+}
+
+/*#endregion*/
+
+.rooms-focus i,
+.rooms-focus .font-default,
+.city-focus,
+.txt-search input:focus,
+.calendar-style input:focus {
+  color: $mergulho;
+}
+
+.btn-search {
+  float: right;
+  padding-right: 30px;
+  padding-top: 0px;
+  padding-bottom: 10px;
+}
+
+.form-control:focus,
+.form-control-focus {
+  box-shadow: none;
+  border-color: $mergulho;
+  background-color: white;
+  color: $pedra_cinza;
+}
+
+.input-group-prepend .input-group-text {
+  background-color: $color_fundo_pedra;
+}
+
+.focus-destination .input-group-prepend .input-group-text {
+  background-color: white;
+}
+
+.input-group-prepend .input-group-text img {
+  width: 22.3px;
+  height: 22px;
+  object-fit: contain;
+}
+
+i {
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  color: $pedra_cinza;
+  padding-top: 8px;
+  float: left;
+}
+
+.icon-fechar {
+  padding-top: 10px;
+  padding-right: 20px;
+  float: right;
+}
+
+.icon-rooms {
+  padding-left: 3px;
+}
+
+.section-filter {
+  background: white;
+}
+
+.header-lupa-filter {
+  display: none;
+  float: right;
+  width: 2%;
+  cursor: pointer;
+  margin-top: -4px;
+}
+
+.header-lupa-filter .icon-lupa {
+  // color: $color_light;
+  font-size: 16px;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: $mergulho;
+  margin-top: 4px;
+  padding: 7px;
+}
+
+.form-control[readonly] {
+  background: $color_fundo_pedra;
+  cursor: auto;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* IE9, IE10, IE11 */
+@media screen and (min-width: 0\0) {
+  .loading-complete {
+    right: 10px;
+  }
+}
+
+.page-list {
+  height: 100%;
+}
+
+/* Medium */
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .ngx-select__item {
+    padding: 12px 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .page-list .balloon-calendar.checkout-list {
+    left: auto;
+    right: 0;
+    top: 45px;
+  }
+
+  .page-list .balloon-calendar.checkout-list::after,
+  .page-list .balloon-calendar.checkout-list::before {
+    right: 66%;
+    left: auto;
+  }
+
+  .page-list .loading-complete {
+    width: 20px !important;
+    height: 20px;
+    margin-top: -2px;
+    margin-right: 7px;
+  }
+
+  .page-list .filter-search {
+    padding: 0;
+  }
+
+  .page-list .title {
+    font-size: 18px;
+  }
+
+  .page-list .balloon {
+    margin-top: 50px;
+  }
+
+  .page-list .icon-hospede {
+    padding-top: 2px;
+    padding-left: 3px;
+    font-size: 17px;
+  }
+
+  .page-list .pax .font-default {
+    padding-top: 2px;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .page-list .rooms .font-default {
+    padding-top: 4px;
+    padding-right: 3px;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .page-list .balloon-calendar::after,
+  .page-list .balloon-calendar::before {
+    left: 28%;
+  }
+
+  .page-list .balloon-calendar.checkout-list::after,
+  .page-list .balloon-calendar.checkout-list::before {
+    right: 36%;
+  }
+
+  .page-list .input-group-text {
+    padding-top: 0;
+    padding-left: 9px;
+    height: 30px;
+  }
+
+  .page-list #destantion .input-group-text {
+    height: 24px;
+    padding-top: 4px;
+  }
+
+  .page-list #destantion {
+    float: left;
+    width: 25%;
+  }
+
+  .page-list #room {
+    float: left;
+    width: 33%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .page-list #datepicker {
+    float: left;
+    width: 40%;
+    padding: 0;
+  }
+
+  .page-list .balloon-calendar {
+    top: 50px;
+  }
+
+  .page-list .calendar-style .ckeckin.full,
+  .page-list .calendar-style .ckeckout.full {
+    width: 47%;
+    margin-right: 5px;
+  }
+
+  .page-list .icon-calendar {
+    padding-top: 8px;
+    font-size: 15px;
+  }
+
+  .page-list .calendar-style .form-control,
+  .page-list .calendar-style .input-group-prepend {
+    height: 30px;
+    background: white;
+  }
+
+  .page-list .btn-search {
+    display: none;
+  }
+
+  .page-list .text-rooms {
+    grid-template-columns: 48% 51%;
+  }
+
+  .page-list .text-rooms .rooms {
+    height: 100%;
+    padding-top: 1px;
+  }
+
+  .page-list .room-input {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    background-color: $color_fundo_pedra;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .page-list .text-rooms .pax {
+    height: 22px;
+    margin-top: 3px;
+    padding-top: 0;
+    padding-left: 3px;
+  }
+
+  .page-list .icon-rooms {
+    padding-top: 4px;
+    padding-left: 3px;
+    font-size: 17px;
+  }
+
+  .page-list .font-default {
+    font-size: 15px;
+    padding-left: 4px;
+    padding-top: 2px;
+  }
+
+  .page-list .icon-map {
+    font-size: 15px;
+  }
+
+  .page-list .header-lupa-filter {
+    display: block;
+  }
+}
+
+.plans {
+  margin-bottom: 30px;
+}
+
+/* Mobile */
+@media only screen and (max-width: 657px) {
+  .btn-back {
+    display: block;
+  }
+
+  .btn-search {
+    margin-bottom: 20px;
+    padding-top: 0px;
+  }
+
+  .title-page {
+    font-size: 18px;
+    text-align: left;
+    color: $passeio_noturno;
+    line-height: 1;
+  }
+
+  .col-auto {
+    margin-bottom: 20px;
+  }
+
+  .calendar-style .ckeckin,
+  .calendar-style .ckeckout {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  .ngx-select__item {
+    padding: 12px 20px;
+  }
+
+  .focus-destination {
+    padding: 5px;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    // background: $color_fundo_pedra;
+    background: white;
+    z-index: 11;
+    left: 0;
+  }
+
+
+  .focus-destination .title-page-simulator,
+  .focus-destination .btn-search {
+    display: none;
+  }
+
+  .filter-search {
+    padding: 0 20px;
+  }
+
+  .section-filter {
+    height: 400px;
+    width: 100%;
+    // background:#fcfcfc;
+  }
+
+  .focus.filter-search {
+    top: 36px;
+    position: absolute;
+    //
+    margin-left: 20px;
+    margin-right: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .simulator-search .focus.filter-search {
+    position: inherit;
+  }
+
+  .rooms .font-default,
+  .pax .font-default,
+  .calendar-style .form-control {
+    font-size: 16px;
+  }
+
+  .balloon::after,
+  .balloon::before,
+  .balloon-calendar::after,
+  .balloon-calendar::before,
+  .balloon-calendar.checkout::after,
+  .balloon-calendar.checkout::before,
+  .header-lupa-filter {
+    display: none;
+  }
+
+  .view-rooms {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: 10;
+    left: 0;
+    background: white;
+    margin: 0;
+    padding: 5px;
+  }
+
+  .balloon-calendar,
+  .balloon-calendar.checkout {
+    left: 0;
+  }
+
+  .balloon-calendar-focus {
+    margin: 0;
+    padding-top: 5px;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+    left: 0;
+    float: left;
+    box-shadow: none;
+  }
+
+  .balloon-calendar {
+    box-shadow: none;
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    // border: none;
+    margin-top: 74px;
+  }
+
+  .page-list .balloon-calendar {
+    left: 0;
+  }
+
+  .page-list .balloon-calendar.checkout-list {
+    top: 54px;
+  }
+
+  .balloon.balloon-open {
+    position: absolute;
+    z-index: 2;
+    top: 51px;
+    box-shadow: none;
+    float: left;
+    left: 0;
+    //
+    border-radius: 5px;
+    border: 1px solid #dcdcdc;
+    height: max-content;
+    // margin: 20px;
+    // width: calc(100% - 40px);
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  ngb-datepicker {
+    width: 100%;
+    float: left;
+  }
+
+  .btn-search {
+    width: 100%;
+    padding: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .fc-btn-success {
+    width: 100%;
+  }
+
+  .simulator-home {
+    .filter-search {
+      padding-left: 0;
+      padding-right: 0;
+
+    }
+
+    .btn-search {
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+
+      .fc-btn {
+        width: 100%;
+      }
+    }
+  }
+
+  .simulator-search {
+    .filter-search {
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+      float: left;
+      max-width: inherit;
+    }
+
+    .btn-search {
+      width: 100%;
+      padding-left: 0;
+      padding-top: 0;
+
+      .fc-btn {
+        height: 40px;
+      }
+    }
+
+  }
+}
+
+// Adaptação do IE
+@media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
+  .text-rooms {
+    display: block;
+  }
+
+  .text-rooms .rooms {
+    width: 49%;
+  }
+
+  .text-rooms .pax {
+    width: 48%;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 768px) {
+  .section-filter {
+    padding-left: 20px;
+    padding-right: 38px;
+  }
+}

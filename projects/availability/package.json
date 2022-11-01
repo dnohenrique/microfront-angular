@@ -1,0 +1,38 @@
+{
+  "name": "@ferias-e-co/availability",
+  "repository": "bitbucket:ferias-e-co/libraryAvailability",
+  "scripts": {
+    "version-patch": "(mkdir .git || true) && npm version patch && git push --tags",
+    "version-minor": "(mkdir .git || true) && npm version minor && git push --tags",
+    "version-major": "(mkdir .git || true) && npm version major && git push --tags"
+  },
+  "version": "0.0.15",
+  "peerDependencies": {
+    "@angular/animations": "~8.1.0",
+    "@angular/cdk": "^8.1.2",
+    "@angular/common": "~8.1.0",
+    "@angular/compiler": "~8.1.0",
+    "@angular/core": "~8.1.0",
+    "@angular/forms": "~8.1.0",
+    "@angular/platform-browser": "^8.1.3",
+    "@angular/platform-browser-dynamic": "~8.1.0",
+    "@angular/router": "~8.1.0",
+    "rxjs": "~6.4.0",
+    "tslib": "^1.9.0",
+    "typescript-string-operations": "^1.3.1",
+    "zone.js": "~0.9.1",
+    "@ng-bootstrap/ng-bootstrap": "^5.1.0",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "linqts": "^1.12.5",
+    "ng-click-outside": "^4.0.0",
+    "ng-number-picker": "^1.1.9",
+    "ngx-bootstrap": "^5.1.2",
+    "ngx-mask": "^8.0.2",
+    "ngx-openlayers": "^0.8.22",
+    "ngx-select-ex": "^3.7.0",
+    "ngx-spinner": "^8.0.3",
+    "ngx-toastr": "^10.0.4",
+    "openlayers": "^4.6.5"
+  }
+}

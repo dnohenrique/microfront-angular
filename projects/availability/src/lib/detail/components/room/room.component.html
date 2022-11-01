@@ -1,0 +1,438 @@
+<div class="rooms" id="room-div" [ngClass]="{'loading-information': loading}">
+  <div class="room-title"
+    *ngIf="!loading && !msgEmpty  && !msgError && visibilityRoomFilter && visibilityCalendarFilter">Escolha seu
+    quarto abaixo</div>
+  <div class="room-title" [ngClass]="{'empty-msg': msgEmpty || msgError}" *ngIf="loading || msgError || msgEmpty">
+    Quartos
+  </div>
+
+  <div id="btn-filter-back" class="btn-back" *ngIf="viewRoom || viewCalendar">
+    <i id="btn-filter-close" class="icon-fechar"></i>
+  </div>
+
+  <div class="form-field plans" *ngIf="simulator && entitySearchRoom.availabilityFilter">
+    <div class="label-text">Plano</div>
+    <label class="fc-input-radio" *ngFor="let plan of filterPlans; let i = index;">
+      <input type="radio" name="rdplan" (change)="entitySearchRoom.availabilityFilter.planId = plan.id"
+        [checked]="plan.id == entitySearchRoom.availabilityFilter.planId">
+      <span class="fc-checkradio"></span>
+      {{plan.name}}
+    </label>
+  </div>
+
+  <!-- Datepicker Checkin/Checkout -->
+  <div id="datepickerRoom"
+    [ngClass]="{'balloon-calendar-focus': viewCalendar, 'calendar-mobile': !visibilityCalendarFilter, 'simulator': simulator}"
+    *ngIf="visibilityRoomFilter" (clickOutside)="clickOutCalendar($event)">
+    <div id="calendar-input-room" class="calendar-style">
+      <div class="ckeckin input-group row-input"
+        [ngClass]="{'full': isPageList, 'input-error': messaError.checkin, 'full-width': !visibilityCalendarFilter}">
+        <div class="input-group-prepend">
+          <div class="input-group-text" [ngClass]="{'calendar-focus': viewCalendar && !focusCheckout}">
+            <i class="icon-calendar"></i>
+          </div>
+        </div>
+        <input type="text" class="form-control" (focus)="showCalendar()" mask='00/00/0000' (keyup)="changedCheckin()"
+          [(ngModel)]="entitySearchRoom.availabilityFilter.checkin" autocomplete="off" data-hj-whitelist
+          [disabled]="loading" [ngClass]="{'form-control-focus': viewCalendar && !focusCheckout}"
+          [ngModelOptions]="{standalone: true}" id="checkinRoom" placeholder="Entrada" [readonly]="readonlyCalendar" />
+        <div class="error-message" *ngIf="messaError.checkin">
+          Informe a Entrada
+        </div>
+      </div>
+      <div class="ckeckout input-group row-input"
+        [ngClass]="{'full': isPageList, 'input-error': messaError.checkout, 'full-width': !visibilityCalendarFilter}">
+        <div class="input-group-prepend">
+          <div class="input-group-text" [ngClass]="{'calendar-focus': viewCalendar && focusCheckout}">
+            <i class=" icon-calendar"></i>
+          </div>
+        </div>
+        <input type="text" class="form-control" [disabled]="loading"
+          [ngClass]="{'form-control-focus': viewCalendar && focusCheckout}" (focus)="showCalendar(true)"
+          mask='00/00/0000' (keyup)="changedCheckout()" autocomplete="off" data-hj-whitelist
+          [(ngModel)]="entitySearchRoom.availabilityFilter.checkout" [ngModelOptions]="{standalone: true}"
+          id="checkoutRoom" placeholder="Saída" [readonly]="readonlyCalendar" />
+        <div class="error-message" *ngIf="messaError.checkout">
+          Informe a Saída
+        </div>
+      </div>
+
+      <div class="balloon-calendar calendar-room"
+        [ngClass]="{'balloon-calendar-open': viewCalendar, 'checkout': focusCheckout && !isPageList, 'checkout-list':  focusCheckout && isPageList, 'calendar-mobile': !visibilityCalendarFilter, 'simulator': simulator}"
+        *ngIf="viewCalendar">
+        <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="displayMonths" [dayTemplate]="t"
+          [minDate]="minDate" [startDate]="startDate" outsideDays="collapsed" [maxDate]="maxDate">
+        </ngb-datepicker>
+        <ng-template #t let-date let-focused="focused">
+          <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+            [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+            (mouseleave)="hoveredDate = null">
+            {{ date.day }}
+          </span>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quartos(Adulto e Crianças) -->
+  <div id="filterRoom" [ngClass]="{'view-rooms': viewRoom}" (clickOutside)="clickOut($event)"
+    *ngIf="visibilityCalendarFilter">
+    <div id="divViewRoom" class="input-group row-input row-rooms" [ngClass]="{'full-width': !visibilityRoomFilter}">
+      <div class="input-group-prepend room-input cursor-pointer" (click)="viewRooms()">
+        <div class="fc-input-group-text text-rooms room-input" [ngClass]="{'rooms-focus': viewRoom}">
+          <div class="filter-rooms">
+            <i class="icon-rooms"></i>
+            <span class="font-default room-description-mobile">{{entitySearchRoom.availabilityFilter.qtdRooms}}
+              quarto<span *ngIf="entitySearchRoom.availabilityFilter.qtdRooms > 1">s</span></span>
+          </div>
+          <div class="pax">
+            <i class="icon-hospede"></i>
+            <span class="font-default room-description-mobile">{{entitySearchRoom.availabilityFilter.qtdHospede}}
+              pessoa<span *ngIf="entitySearchRoom.availabilityFilter.qtdHospede > 1">s</span></span>
+          </div>
+        </div>
+      </div>
+      <div id="balloonRoom" class="balloon filter-search" [ngClass]="{'balloon-open': viewRoom}">
+        <ul class="list" *ngFor="let room of entitySearchRoom.availabilityFilter.rooms; let last = last ">
+          <!-- Header Quarto -->
+          <li role="menuitem">
+            <div class="form-row">
+              <div class="title-room">Quarto {{room.id}}</div>
+              <!-- Remover Quarto -->
+              <div id="btnEliminarFilterRoom" class="btn-eliminar" (click)="removeRoom(room)"
+                *ngIf="last && entitySearchRoom.availabilityFilter.rooms.length > 1">
+                <!-- <i class="icon-lixeira"></i> -->
+                <button type="button" class="fc-btn fc-btn-danger">
+                  <span class="del">Deletar</span>
+                </button>
+              </div>
+            </div>
+          </li>
+          <!-- Quantidade Adultos -->
+          <li role="menuitem">
+            <div class="form-row">
+              <div class="legenda-room">
+                <div class="title">Adultos</div>
+                <div class="sub-title">A partir de 18 anos</div>
+              </div>
+              <div class="number qtd">
+                <ng-number-picker inputReadOnly="true" size="small" [(value)]="room.quantityAdults" min="1"
+                  [max]="room.maxHospedeAdult" (valueChange)="changeAdult(room)" data-hj-whitelist>
+                </ng-number-picker>
+              </div>
+            </div>
+          </li>
+          <!-- Quantidade de Crianças -->
+          <li role="menuitem">
+            <div class="form-row">
+              <div class="legenda-room">
+                <div class="title">Crianças</div>
+                <div class="sub-title">Até 17 anos</div>
+              </div>
+              <div class="number qtd">
+                <ng-number-picker customClass="number" [(value)]="room.quantityChild" size="small" inputReadOnly="true"
+                  (valueChange)="changeChild(room)" min="0" [max]="room.maxHospedeChild" data-hj-whitelist>
+                </ng-number-picker>
+              </div>
+            </div>
+          </li>
+          <!-- Idade do Menor -->
+          <li role="menuitem" *ngFor="let childAge of room.childAgesCustom;let i = index;">
+            <div class="form-row">
+              <div class="legenda-room title-child"> Idade da criança {{(i + 1)}}</div>
+              <div class="number">
+                <ngx-select id="select{{i}}" class="child" autoActiveOnMouseEnter="true" [items]="ages"
+                  optionValueField="id" optionTextField="name" [(ngModel)]="childAge.age"
+                  [ngModelOptions]="{standalone: true}" [noAutoComplete]="true" placeholder="Informe Idade"
+                  data-hj-whitelist>
+                </ngx-select>
+              </div>
+            </div>
+          </li>
+          <li class="divider dropdown-divider"></li>
+          <!-- Botão Adicionar mais quartos -->
+          <li role="menuitem" *ngIf="last">
+            <div class="form-row">
+              <div class="btn-add">
+                <div class="btn-room" (click)="addRoom()"
+                  [ngClass]="{'disabled': entitySearchRoom.availabilityFilter.rooms.length == 2}">
+                  <div id="addQuartoFilterRoom-ico" class="ico">+</div>
+                  <div id="addQuartoFilterRoom-text" class="text-btn">Mais um quarto</div>
+                </div>
+              </div>
+
+              <div class="btn-apply">
+                <div class="btn-room float-right">
+                  <button type="button" id="ApplyFilterRoom" class="fc-btn fc-btn-success" (click)="applyRoom()">
+                    <span>Aplicar</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="room-nova-pesquisa" *ngIf="visibilityRoomFilter && visibilityCalendarFilter">
+    <button type="button" id="btnNovaPesquisa" class="fc-btn fc-btn-light" (click)="getDetailRooms(true)"
+      [disabled]="loading">
+      <span>Nova Pesquisa</span>
+    </button>
+
+    <div class="header-lupa-filter" (click)="getDetailRooms()">
+      <i class="icon-lupa"></i>
+    </div>
+  </div>
+
+  <section *ngIf="!msgEmpty && !msgError && visibilityRoomFilter && visibilityCalendarFilter">
+    <div class="loading-text-list" *ngIf="loading">
+      <span>Buscando quartos</span> <img src="https://static.ferias.co/images/lupa_animada.gif">
+    </div>
+
+    <!-- <fc-availability-info-message *ngIf="!loading && !simulator"></fc-availability-info-message> -->
+
+    <!-- Opções de Quartos -->
+    <fieldset class="room-field" *ngFor="let option of entityResult.viewRooms; let i = index">
+      <legend class="room-legend">Opção {{option.numberRoom}}</legend>
+      <section class="room-info" *ngFor="let room of getListRooms(option.rooms)">
+        <div  *ngIf="!room.isPhoto" [ngClass]="{'show-detail': room.description !== undefined}"
+          (click)="openModalDetailRoom(room)">
+          <div class="room-description">
+            <div class="room-description-title" [title]="room.roomName">
+              {{room.roomName}}
+            </div>
+            <div class="room-description-content">
+              <div class="room-included">
+                <div class="room-description-board" [ngClass]="{'show-detail': room.description !== undefined,
+                                'no-board': !room.breakfeastIncluded}" [title]="room.regime">
+                  <i class="icon-check" *ngIf="room.breakfeastIncluded"></i>
+                  <i class="icon-alerta" *ngIf="!room.breakfeastIncluded"></i>
+
+                  <span>{{room.regime}}</span>
+                </div>
+                <div class="room-description-policy no" *ngIf="room.isNonRefundable"
+                  [ngClass]="{'show-detail': room.description !== undefined}"
+                  title="Não permite realizar alterações ou cancelamentos">
+                  <i class="icon-alerta"></i> Não permite realizar alterações ou cancelamentos
+                </div>
+                <div class="room-description-policy" *ngIf="!room.isNonRefundable"
+                  [ngClass]="{'show-detail': room.description !== undefined}"
+                  title="Permite realizar alterações ou cancelamentos">
+                  <i class="icon-check"></i> Permite realizar alterações ou cancelamentos
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="room-hospede">
+            <div class="room-qtd">
+              <i class="icon-rooms"></i> <span class="icon-text">{{room.quantity}} quarto<span
+                  *ngIf="room.quantity > 1">s</span></span>
+            </div>
+            <div class="hospede-room">
+              <i class="icon-hospede"></i>
+              <span class="icon-text">{{room.quantityAdults}} adulto<span *ngIf="room.quantityAdults > 1">s</span>
+                <span *ngIf="room.quantityChild > 0">
+                  e {{room.quantityChild}} criança<span *ngIf="room.quantityChild > 1">s</span>
+                </span>
+              </span>
+            </div>
+            <div class="room-lupa" *ngIf="room.description">
+              <i class="icon-sinal-mais"></i> Mais informações
+            </div>
+          </div>
+        </div>
+        <div class="img" *ngIf="room.isPhoto && room.isPhoto" [ngClass]="{'show-detail': room.isPhoto}"
+          (click)="openModalDetailRoom(room)">
+          <div *ngIf="!loading" class="room-img" [ngStyle]="{'background-image': 'url(' + room.imageUrl + ')' }">
+          </div>
+          <div *ngIf="loading" class="room-img">
+          </div>
+          <div class="room-description-title" [title]="room.roomName">
+            {{room.roomName}}
+          </div>
+          <div class="room-description">
+            <div class="room-included">
+              <div class="room-description-board">
+                <div *ngIf="room.breakfeastIncluded" [ngClass]="{'show-detail': room.isPhoto !== undefined}"
+                  [title]="room.regime">
+                  <i class="icon-check"></i>
+                  <span>{{room.regime}}</span>
+                </div>
+                <div class="no-board" *ngIf="!room.breakfeastIncluded"
+                  [ngClass]="{'show-detail': room.isPhoto !== undefined}" title="Café da manhã não incluso">
+                  <i class="icon-alerta"></i>
+                  <span>Café da manhã não incluso</span>
+                </div>
+
+                <div class="room-description-policy no" *ngIf="room.isNonRefundable"
+                  [ngClass]="{'show-detail': room.isPhoto !== undefined}"
+                  title="Não permite realizar alterações ou cancelamentos">
+                  <i class="icon-alerta"></i> Não permite realizar alterações ou cancelamentos
+                </div>
+                <div class="room-description-policy" *ngIf="!room.isNonRefundable"
+                  [ngClass]="{'show-detail': room.isPhoto !== undefined}"
+                  title="Permite realizar alterações ou cancelamentos">
+                  <i class="icon-check"></i> Permite realizar alterações ou cancelamentos
+                </div>
+              </div>
+            </div>
+            <div class="room-hospede">
+              <div class="room-qtd">
+                <i class="icon-rooms"></i> <span class="icon-text">{{room.quantity}} quarto<span
+                    *ngIf="room.quantity > 1">s</span></span>
+              </div>
+              <div class="hospede-room">
+                <i class="icon-hospede"></i>
+                <span class="icon-text">{{room.quantityAdults}} adulto<span *ngIf="room.quantityAdults > 1">s</span>
+                  <span *ngIf="room.quantityChild > 0">
+                    e {{room.quantityChild}} criança<span *ngIf="room.quantityChild > 1">s</span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="room-lupa" *ngIf="room.description">
+              <i class="icon-sinal-mais"></i> Mais informações
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="payment" [ngClass]="{'img-payment': option.isPhoto}">
+        <div class="title-payment" *ngIf="option.price.planDailyUsed > 0">
+          <span>Quantas diárias deseja utilizar?</span>
+        </div>
+        <div class="info-daily" *ngIf="option.price.planDailyUsed > 0">
+          <div class="number qtd-daily">
+            <ng-number-picker inputReadOnly="true" size="small" [(value)]="option.price.planDailyUsed"
+              [min]="!loadingPayment? 1: option.price.planDailyUsed"
+              [max]="!loadingPayment? option.price.planDailyUsedMax: option.price.planDailyUsed"
+              [customClass]="{'up': option.price.planDailyUsed === option.price.planDailyUsedMax? 'disabled' : '', 'down': option.price.planDailyUsed === 1? 'disabled': ''}"
+              (valueChange)="getPayments(option)" data-hj-whitelist>
+            </ng-number-picker>
+            <hr class="qtd-daily-border">
+          </div>
+        </div>
+
+        <div class="title-payment">
+          Escolha como reservar
+        </div>
+        <div class="observation-booking">(Taxas já Inclusas)</div>
+        <div class="info-option" [ngClass]="{'loading-information': loadingPayment}">
+          <div class="radio-payment" *ngFor="let price of option.prices">
+            <label class="fc-input-radio" [ngClass]="{'checked': price.selected}">
+              <input type="radio" name="payment{{option.numberRoom}}{{price.optionPaymentId}}"
+                [checked]="price.selected" [value]="price.optionPaymentId"
+                (change)="changePayment(price.optionPaymentId, option)">
+              <span class="fc-checkradio"></span>
+              <span class="description">
+                <!-- Diária -->
+                <span *ngIf="price.planDailyUsed > 0 && 
+                           (!price.planPointUsed || price.planPointUsed === 0) && 
+                           (!price.planExtraPrice || price.planExtraPrice === 0) && 
+                           (!price.accumulatedPoint || price.accumulatedPoint === 0)">
+                  {{price.planDailyUsed}} Diária<span *ngIf="price.planDailyUsed > 1">s</span>
+                </span>
+                <!-- Diária + Ponto-->
+                <span *ngIf="price.planDailyUsed > 0 && 
+                             price.planPointUsed > 0 && 
+                            (!price.planExtraPrice || price.planExtraPrice === 0)">
+                  {{price.planDailyUsed}} Diária<span *ngIf="price.planDailyUsed > 1">s</span>
+                  +
+                  {{price.planPointUsedFormat}} Ponto<span *ngIf="price.planPointUsed > 1">s</span>
+                </span>
+                <!-- Diária + Acumulo de Ponto-->
+                <span *ngIf="price.planDailyUsed > 0 && 
+                             price.accumulatedPoint > 0 &&
+                             (!price.planPointUsed || price.planPointUsed === 0) && 
+                             (!price.planExtraPrice || price.planExtraPrice === 0)">
+                  {{price.planDailyUsed}} Diária<span *ngIf="price.planDailyUsed > 1">s</span>
+                  |
+                  Ganhe {{price.accumulatedPointFormat}} Ponto<span *ngIf="price.accumulatedPoint > 1">s</span>
+                </span>
+                <!-- Diária + Extra -->
+                <span *ngIf="price.planDailyUsed > 0 && 
+                             price.planExtraPrice > 0 &&
+                             (!price.planPointUsed || price.planPointUsed === 0) && 
+                             (!price.accumulatedPoint || price.accumulatedPoint === 0)">
+                  {{price.planDailyUsed}} Diária<span *ngIf="price.planDailyUsed > 1">s</span>
+                  +
+                  {{price.planExtraPrice | currency: price.currency}}
+                </span>
+                <!-- Diária + Ponto + Extra -->
+                <span *ngIf="price.planDailyUsed > 0 && 
+                           price.planPointUsed > 0 && 
+                           price.planExtraPrice > 0">
+                  {{price.planDailyUsed}} Diária<span *ngIf="price.planDailyUsed > 1">s</span>
+                  +
+                  {{price.planPointUsedFormat}} Ponto<span *ngIf="price.planPointUsed > 1">s</span>
+                  +
+                  {{price.planExtraPrice | currency: price.currency}}
+                </span>
+                <!-- Ponto -->
+                <span *ngIf="price.planPointUsed > 0 && 
+                           (!price.planDailyUsed || price.planDailyUsed === 0) &&
+                           (!price.planExtraPrice || price.planExtraPrice === 0) && 
+                           (!price.accumulatedPoint || price.accumulatedPoint === 0)">
+                  {{price.planPointUsedFormat}} Ponto<span *ngIf="price.planPointUsed > 1">s</span>
+                </span>
+                <!-- Ponto + Extra -->
+                <span *ngIf="(!price.planDailyUsed || price.planDailyUsed === 0) && 
+                           price.planPointUsed > 0 && 
+                           price.planExtraPrice > 0">
+                  {{price.planPointUsedFormat}} Ponto<span *ngIf="price.planPointUsed > 1">s</span>
+                  +
+                  {{price.planExtraPrice | currency: price.currency}}
+                </span>
+                <!-- Extra -->
+                <span *ngIf="(!price.planDailyUsed || price.planDailyUsed === 0) && 
+                  (!price.planPointUsed || price.planPointUsed === 0) && 
+                  price.planExtraPrice > 0">
+                  {{price.planExtraPrice| currency:price.currency}}
+                </span>
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="room-money-booking" *ngIf="!simulator" id="broker_{{option.rooms[0].brokerName}}_{{i}}">
+          <button type="button" id="btnBooking{{i}}" class="fc-btn fc-btn-success" [ngClass]="{'fc-btn-success':  option.price.totalPriceExtra === 0,
+        'fc-btn-success-rh': option.price.totalPriceExtra > 0}" (click)="booking(option)">
+            Reservar
+          </button>
+        </div>
+      </div>
+    </fieldset>
+
+    <!--PAGINAÇÃO-->
+    <fc-availability-pagination (paginationEvent)="getRooms($event)" [datas]="entityResult.options" [loading]="loading"
+      [cssScrollTop]="'.room-title'" [registersPerPage]="10" [id]="'room'">
+    </fc-availability-pagination>
+  </section>
+
+  <!-- Mensagem de Estabilidade -->
+  <div class="msg-empty" *ngIf="msgEmpty">
+    <!-- *ngIf="entityResult.options.length == 0" -->
+    <img src="https://static.ferias.co/images/esgotado.png" alt="">
+    <div class="title">
+      Não há mais vagas para esse período.
+    </div>
+    <div class="sub-title">
+      Experimente buscar por uma data diferente.
+    </div>
+  </div>
+
+  <!-- Mensagem de Erro -->
+  <div class="fc-alert fc-alert-warning" *ngIf="msgError">
+    <i class="icon-alerta"></i>
+    <span><b>Não conseguimos carregar os quartos.</b> Por favor, <span class="reload-page"
+        (click)="reloadPage()">atualize a página</span> para tentarmos novamente.</span>
+  </div>
+
+  <!-- Modal Detalhes Quartos -->
+  <fc-availability-gallery-thumb [galleryId]="'room'" [hotelImages]="roomSelected.photos" [title]="'Detalhes do quarto'"
+    [visibilityModal]="visibilityRoomModal" (visibilityEvent)="onChangeVisibilityModal($event)"
+    [roomSelected]="roomSelected">
+  </fc-availability-gallery-thumb>
+</div>

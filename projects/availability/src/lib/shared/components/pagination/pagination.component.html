@@ -1,0 +1,27 @@
+<div class="box-pagination" *ngIf="dataCount > 1 && !loading">
+    <div class="page-title">Página {{pageNumber}} de {{pageCount}}</div>
+    <div class="pagination-position">
+        <button type="button" id="firt-{{id}}" class="btn-pagination-seta" (click)="firstPage()"
+            [disabled]="pageNumber === 1 || dataCount === 0">
+            <span class="pagination-arrow">&laquo;</span>
+        </button>
+
+        <button type="button" id="back-{{id}}" class="btn-pagination-seta" (click)="backPage()"
+            [disabled]="pageNumber === 1 || dataCount === 0">
+            <span class="pagination-arrow">&lsaquo;</span>
+        </button>
+
+        <button type="button" id="go-{{id}}-{{i}}" class="btn-pagination" (click)="goTo(btn.page)"
+            *ngFor="let btn of paginationButtons; let i = index;" [ngClass]="{'current-page': (btn.page === pageNumber)}">
+            {{btn.page}}
+        </button>
+        <button type="button" id="next-{{id}}" class="btn-pagination-seta" (click)="nextPage()"
+            [disabled]="pageNumber === pageCount || dataCount === 0">
+            <span class="pagination-arrow">&rsaquo;</span>
+        </button>
+        <button type="button" id="last-{{id}}" class="btn-pagination-seta" (click)="lastPage()"
+            [disabled]="pageNumber === pageCount || dataCount === 0">
+            <span class="pagination-arrow">&raquo;</span>
+        </button>
+    </div>
+</div>

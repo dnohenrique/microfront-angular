@@ -1,0 +1,62 @@
+.box-pagination {
+  position: relative;
+  display: table;
+  width: 100%;
+  margin-bottom: 70px;
+  text-align: right;
+}
+
+.page-title {
+  margin: 0;
+  min-width: max-content;
+  position: relative;
+  display: inline-block;
+}
+
+.pagination-position {
+  margin: 0;
+  width: max-content;
+  position: relative;
+  display: inline-block;
+}
+
+.pagination-arrow {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 0.65;
+}
+
+.btn-pagination-seta {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 5px;
+}
+
+
+/* Mobile */
+@media only screen and (max-width: 699px) {
+  .box-pagination {
+    position: relative;
+    display: table;
+    margin: auto;
+    width: 100%;
+    min-height: 100px;
+  }
+
+  .pagination-position {
+    margin: 0;
+    min-width: max-content;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    margin-bottom: 100px;
+  }
+
+  .page-title {
+    top: 80px;
+    width: 100%;
+    float: left;
+    text-align: center;
+  }
+}

@@ -1,0 +1,45 @@
+<div class="modal-shadow" [style.display]="visibilityModal ? 'block' : 'none'">
+  <div id="modal-content" class="modal-content">
+    <div class="modal-header">
+      {{title}} <span class="close" (click)="fecharModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <section *ngIf="hotelImages">
+        <div *ngFor="let image of hotelImages; let i = index">
+          <div *ngIf="slideIndex === (i+1)" id="selectedSlide" class="selectedSlide"
+            [ngStyle]="{'background-image': 'url(' + image.url + ')' }"></div>
+        </div>
+        <span class="pagination" *ngIf="hotelImages">Foto {{slideIndex}} de {{hotelImages.length}}</span>
+        <div id="gallery{{galleryId}}" class="gallery" [style.left]="positionGalleryLeft.toString()+'px'"
+          [style.width]="galleryWidth+'px'">
+          <div *ngFor="let image of hotelImages; let i = index">
+            <img [ngClass]="{'active': slideIndex === i + 1}"
+              [ngStyle]="{'border': (slideIndex === i + 1) ? '3px solid #00b0b0' : 'none' }" class="mySlides"
+              (click)="clickThumb(i)" [src]="image.url" style="width: 100px; float: left;">
+          </div>
+        </div>
+        <a class="prev" (click)="plusDivs(-1)">&#10094;</a>
+        <a class="next" (click)="plusDivs(1)">&#10095;</a>
+      </section>
+
+      <section *ngIf="roomSelected">
+        <section *ngIf="roomSelected.description">
+          <h4 class="room-name"><b>{{roomSelected.roomName}}</b></h4>
+          <div class="description-room" [innerHTML]="roomSelected.description"></div>
+        </section>
+
+        <section *ngIf="roomSelected.amenities && roomSelected.amenities.length > 0">
+          <div class="detail-room">
+            <h4 *ngIf="!roomSelected.description"><b>{{roomSelected.roomName}}</b></h4>
+            <ul class="list-ul">
+              <li *ngFor="let amenities of roomSelected.amenities">
+                <span>{{amenities.name}}</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </section>
+    </div>
+  </div>
+
+</div>

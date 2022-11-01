@@ -1,0 +1,265 @@
+@import 'colors';
+
+.conteudo {
+  width: 100%;
+  float: left;
+  border-radius: 5px;
+  border: solid 1px $pedra_clara;
+  margin-bottom: 30px;
+
+}
+
+.conteudo.mala {
+  height: 64px;
+  background-color: white;
+}
+
+.conteudo.filter {
+  padding: 20px 7px 7px 7px;
+  border-bottom: 5px solid $horizonte;
+  background: white;
+  border-top: 5px solid $mergulho;
+}
+
+.conteudo.mala .ico {
+  width: 55px;
+  height: 100%;
+  float: left;
+  background-color: $horizonte;
+  padding-top: 17px;
+  text-align: center;
+  font-size: 25px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.conteudo.mala .ico i {
+  color: black;
+}
+
+.conteudo.mala .title {
+  font-size: 15px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: $pedra_do_mar;
+  float: left;
+  padding: 15px 10px;
+  width: calc(100% - 58px);
+  background: white;
+  padding-bottom: 0;
+}
+
+.conteudo.mala .sub-title {
+  font-family: Roboto;
+  font-size: 14px;
+  float: left;
+  width: calc(100% - 58px);
+  padding: 0 10px;
+}
+
+.conteudo.msg {
+  border: none;
+  margin-bottom: 24px;
+}
+
+.icon-estrela {
+  color: $color_secondary;
+  margin-right: 5px;
+}
+
+.icon-estrela.on {
+  color: $horizonte;
+}
+
+
+.order-filter {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  height: 47px;
+  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.1);
+  border: solid 1px $pedra_clara;
+  background-color: white;
+  padding: 10px 21px 5px 21px;
+  border-radius: 36px;
+  left: 50%;
+  margin-left: -62px;
+
+}
+
+.div-order {
+  float: left;
+  width: 81px;
+  font-size: 16px;
+  color: $passeio_noturno;
+  line-height: 1.81;
+  border-right: solid 1px $pedra_clara;
+}
+
+.icon-ordem {
+  padding-right: 5px;
+  color: $passeio_noturno;
+  padding-top: 5px;
+}
+
+.icon-filter {
+  padding-right: 5px;
+  color: $passeio_noturno;
+  padding-top: 4px;
+  // padding-left: 10px;
+}
+
+.full-filter {
+  display: block;
+  background: $color_black;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin: 0;
+  left: 0;
+  z-index: 3000;
+  overflow: scroll;
+  height: 100%;
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+
+  .col-filter .filter-hotel.full-filter {
+    display: block;
+    // height: calc(100% - 90px);
+    height: 100%;
+    padding-bottom: 90px;
+  }
+}
+
+/*#region CHECKBOX */
+/* The container */
+.container-ckeck {
+  display: block;
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  min-height: 22px;
+  float: left;
+  width: 100%;
+}
+
+.container-ckeck .text {
+  padding-left: 10px;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: $pedra_cinza;
+  float: left;
+  padding-top: 3px;
+}
+
+.category-check {
+  .container-ckeck {
+    margin-bottom: 0;
+  }
+
+  .container-ckeck .text {
+    padding-top: 5px;
+  }
+}
+
+/* Hide the browser's default checkbox */
+.container-ckeck input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  height: 19px;
+  width: 19px;
+  border: solid 2px $pedra_clara;
+  background-color: white;
+  border-radius: 3px;
+}
+
+/* On mouse-over, add a grey background color */
+/* When the checkbox is checked, add a blue background */
+.container-ckeck input:checked~.checkmark,
+.container-ckeck:hover input~.checkmark {
+  background-color: white;
+  color: $mergulho;
+}
+
+.container-ckeck input:checked~.text {
+  color: $mergulho;
+}
+
+.container-ckeck input:checked~.checkmark {
+  border-color: $mergulho;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-ckeck input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-ckeck .checkmark:after {
+  left: 4px;
+  top: 0.5px;
+  width: 7px;
+  height: 11px;
+  border: solid $mergulho;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+
+}
+
+/* #endregion */
+
+
+.loading-text-list {
+  margin-top: 9px;
+  margin-bottom: 32px;
+  float: left;
+  width: 100%;
+
+  span {
+    font-size: 16px;
+    font-family: Roboto;
+    color: #a8a8a8;
+    float: left;
+    padding-right: 5px;
+  }
+
+  img {
+    width: 24.9px;
+    height: 24.9px;
+    float: left;
+  }
+}
