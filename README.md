@@ -1,2 +1,2 @@
-# microfront-disponibilidade
-Biblioteca microfront-disponibilidade
+# microfront-angular
+Biblioteca microfront-angular
